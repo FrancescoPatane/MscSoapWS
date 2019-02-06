@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="it.niuma.mscsoapws.ws"
+           targetNamespace="it.niuma.mscsoapws.ws" elementFormDefault="qualified">
+
+
+	<xs:element name="loginRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="username" type="xs:string" />
+				<xs:element name="password" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+		<xs:element name="loginResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accessToken" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="getPOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="poNumber" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getPOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="pOrder" type="tns:POrderXml" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	    <xs:complexType name="POrderLineXml">
+        <xs:sequence>
+<!--             <xs:element name="id" type="xs:integer"/> -->
+            <xs:element name="line" type="xs:decimal"/>
+<!--             <xs:element name="ordID" type="xs:integer"/> -->
+<!--             <xs:element name="porder_ref" type="xs:integer"/> -->
+            <xs:element name="itemCode" type="xs:string"/>
+            <xs:element name="itemCodeExternal" type="xs:string"/>
+            <xs:element name="itemGlCode" type="xs:string"/>
+            <xs:element name="itemDescription" type="xs:string"/>
+            <xs:element name="itemUnit" type="xs:string"/>
+            <xs:element name="itemReceivingUnit" type="xs:string"/>
+            <xs:element name="unitFactor" type="xs:decimal" />
+            <xs:element name="quantityApproved" type="xs:decimal" />
+            <xs:element name="quantityOrdered" type="xs:decimal" />
+            <xs:element name="quantityReceived" type="xs:decimal" />
+            <xs:element name="itemPrice" type="xs:decimal" />
+            <xs:element name="itemTax" type="xs:decimal" />
+            <xs:element name="itemDiscount" type="xs:decimal" />
+            <xs:element name="itemExpiry" type="xs:dateTime" />
+            <xs:element name="lineComment" type="xs:string" />
+            <xs:element name="vendorItemCode" type="xs:string" />
+            <xs:element name="vendor_notes" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+	<xs:complexType name="POrderXml">
+		<xs:sequence>
+			<xs:element name="poNumber" type="xs:string" />
+			<xs:element name="entityId" type="xs:string" />
+			<xs:element name="entityName" type="xs:string" />
+			<xs:element name="voyageCode" type="xs:string" />
+			<xs:element name="deliveryPortCode" type="xs:string" />
+			<xs:element name="poInternalId" type="xs:long" />
+			<xs:element name="deliveryDate" type="xs:dateTime" />
+			<xs:element name="createDate" type="xs:dateTime" />
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="orderLines" type="tns:POrderLineXml"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	
+
+</xs:schema>
