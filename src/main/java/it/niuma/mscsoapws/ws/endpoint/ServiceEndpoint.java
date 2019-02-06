@@ -26,13 +26,8 @@ public class ServiceEndpoint {
 	@ResponsePayload
 	public GetPOrderResponse getPOrderRequest(@RequestPayload GetPOrderRequest request) throws Exception {
 		GetPOrderResponse response = new GetPOrderResponse();
-		
-		POrderXml pOrder = service.getPOrderFromOrderNumber(request.getPoNumber());//pOrderRepository.findByPoNumber(request.getPoNumber());
-		
+		POrderXml pOrder = service.getPOrderFromOrderNumber(request.getPoNumber());
 		response.setPOrder(pOrder);
-		
-		
-
 		return response;
 	}
 	
