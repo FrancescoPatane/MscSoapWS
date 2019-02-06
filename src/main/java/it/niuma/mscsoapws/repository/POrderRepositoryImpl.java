@@ -39,6 +39,7 @@ public class POrderRepositoryImpl implements POrderRepository {
 				
 				return pOrder;
 			} catch (Exception e) {
+				logger.error("Error executing findByPoNumber, poNumber: " + poNumber); 
 				e.printStackTrace();
 				throw e;
 			}

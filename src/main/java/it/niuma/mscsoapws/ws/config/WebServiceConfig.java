@@ -66,7 +66,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	public SmartEndpointInterceptor addSmartEndpointInterceptor(){
 
 		PayloadRootSmartSoapEndpointInterceptor smartInterceptor = 
-				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), ServiceEndpoint.NAMESPACE, "loginRequest");
+				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), ServiceEndpoint.NAMESPACE, "getPOrderRequest");
 
 		return smartInterceptor;
 	}    
