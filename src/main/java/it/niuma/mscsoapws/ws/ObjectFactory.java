@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 12:01:49 PM CET 
+// Generato il: 2019.02.06 alle 12:52:41 PM CET 
 //
 
 
@@ -53,11 +53,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPOrderLineFromPOrderRef }
+     * 
+     */
+    public GetPOrderLineFromPOrderRef createGetPOrderLineFromPOrderRef() {
+        return new GetPOrderLineFromPOrderRef();
+    }
+
+    /**
+     * Create an instance of {@link GetPOrderLineFromPOrderRefResponse }
+     * 
+     */
+    public GetPOrderLineFromPOrderRefResponse createGetPOrderLineFromPOrderRefResponse() {
+        return new GetPOrderLineFromPOrderRefResponse();
+    }
+
+    /**
+     * Create an instance of {@link POrderLineXml }
+     * 
+     */
+    public POrderLineXml createPOrderLineXml() {
+        return new POrderLineXml();
+    }
+
+    /**
      * Create an instance of {@link GetPOrderRequest }
      * 
      */
     public GetPOrderRequest createGetPOrderRequest() {
         return new GetPOrderRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetPOrderLineFromItemExpiryResponse }
+     * 
+     */
+    public GetPOrderLineFromItemExpiryResponse createGetPOrderLineFromItemExpiryResponse() {
+        return new GetPOrderLineFromItemExpiryResponse();
     }
 
     /**
@@ -69,6 +101,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPOrderLineFromIDResponse }
+     * 
+     */
+    public GetPOrderLineFromIDResponse createGetPOrderLineFromIDResponse() {
+        return new GetPOrderLineFromIDResponse();
+    }
+
+    /**
      * Create an instance of {@link LoginRequest }
      * 
      */
@@ -77,11 +117,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link POrderLineXml }
+     * Create an instance of {@link GetPOrderLineFromItemExpiry }
      * 
      */
-    public POrderLineXml createPOrderLineXml() {
-        return new POrderLineXml();
+    public GetPOrderLineFromItemExpiry createGetPOrderLineFromItemExpiry() {
+        return new GetPOrderLineFromItemExpiry();
+    }
+
+    /**
+     * Create an instance of {@link GetPOrderLineFromID }
+     * 
+     */
+    public GetPOrderLineFromID createGetPOrderLineFromID() {
+        return new GetPOrderLineFromID();
     }
 
 }

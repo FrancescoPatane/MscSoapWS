@@ -1,7 +1,17 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="it.niuma.mscsoapws.ws"
-           targetNamespace="it.niuma.mscsoapws.ws" elementFormDefault="qualified">
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+           targetNamespace="it.niuma.mscsoapws.ws" elementFormDefault="qualified"
+           jaxb:version="2.0"
+           >
 
+<xs:annotation>
+    <xs:appinfo>
+        <jaxb:globalBindings>
+            <jaxb:javaType name="java.util.Date" parseMethod="javax.xml.bind.DatatypeConverter.parseDate" printMethod="javax.xml.bind.DatatypeConverter.printDate" xmlType="xs:dateTime"></jaxb:javaType>
+        </jaxb:globalBindings>
+    </xs:appinfo>
+</xs:annotation>
 
 	<xs:element name="loginRequest">
 		<xs:complexType>
@@ -37,29 +47,90 @@
 		</xs:complexType>
 	</xs:element>
 	
-	    <xs:complexType name="POrderLineXml">
+    <xs:element name="getPOrderLineFromID">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getPOrderLineFromPOrderRef">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="porder_ref" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getPOrderLineFromItemExpiry">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="itemExpiry" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getPOrderLineFromIDResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="POrderLine" type="tns:POrderLineXml" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+        
+    <xs:element name="getPOrderLineFromPOrderRefResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="POrderLines" type="tns:POrderLineXml" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getPOrderLineFromItemExpiryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="POrderLines" type="tns:POrderLineXml" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+	
+    <xs:complexType name="POrderLineXml">
         <xs:sequence>
-<!--             <xs:element name="id" type="xs:integer"/> -->
+            <xs:element name="id" type="xs:long"/>
             <xs:element name="line" type="xs:decimal"/>
-<!--             <xs:element name="ordID" type="xs:integer"/> -->
-<!--             <xs:element name="porder_ref" type="xs:integer"/> -->
-            <xs:element name="itemCode" type="xs:string"/>
-            <xs:element name="itemCodeExternal" type="xs:string"/>
-            <xs:element name="itemGlCode" type="xs:string"/>
-            <xs:element name="itemDescription" type="xs:string"/>
+            <xs:element name="ordID" type="xs:decimal"/>
+            <xs:element name="porder_ref" type="xs:long"/>
+            <xs:element name="itemCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="itemCodeExternal" type="xs:string" minOccurs="0"/>
+            <xs:element name="itemGlCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="itemDescription" type="xs:string" />
             <xs:element name="itemUnit" type="xs:string"/>
-            <xs:element name="itemReceivingUnit" type="xs:string"/>
-            <xs:element name="unitFactor" type="xs:decimal" />
-            <xs:element name="quantityApproved" type="xs:decimal" />
-            <xs:element name="quantityOrdered" type="xs:decimal" />
-            <xs:element name="quantityReceived" type="xs:decimal" />
-            <xs:element name="itemPrice" type="xs:decimal" />
-            <xs:element name="itemTax" type="xs:decimal" />
-            <xs:element name="itemDiscount" type="xs:decimal" />
-            <xs:element name="itemExpiry" type="xs:dateTime" />
-            <xs:element name="lineComment" type="xs:string" />
-            <xs:element name="vendorItemCode" type="xs:string" />
-            <xs:element name="vendor_notes" type="xs:string" />
+            <xs:element name="itemReceivingUnit" type="xs:string" minOccurs="0"/>
+            <xs:element name="unitFactor" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="quantityApproved" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="quantityOrdered" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="quantityReceived" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="itemPrice" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="itemTax" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="itemDiscount" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="itemExpiry" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="lineComment" type="xs:string" minOccurs="0"/>
+            <xs:element name="vendorItemCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="vendorNotes" type="xs:string" minOccurs="0"/>
+            <xs:element name="annullato" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="modificatoDa" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="dataModifica" type="xs:dateTime" minOccurs="0" />
+            <xs:element name="qtConfirmedOrig" type="xs:decimal" minOccurs="0" />
+            <xs:element name="noteAlternative" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityLogistic" type="xs:decimal" minOccurs="0" />
+            <xs:element name="moq" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityApprovedCase" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityOrderedCase" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityReceivedCase" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityConfirmedCase" type="xs:decimal" minOccurs="0" />
+            <xs:element name="quantityLogisticCase" type="xs:decimal" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 

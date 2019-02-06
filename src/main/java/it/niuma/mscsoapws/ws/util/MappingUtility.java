@@ -24,11 +24,11 @@ public class MappingUtility {
 		POrderXml xmlObject = new POrderXml();
 		c.setTime(order.getCreateDate());
 		XMLGregorianCalendar createDateXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-		xmlObject.setCreateDate(createDateXml);
+		//xmlObject.setCreateDate(createDateXml);
 		c.setTime(order.getDeliveryDate());
 		XMLGregorianCalendar deliveryDateXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 
-		xmlObject.setDeliveryDate(deliveryDateXml);
+		//xmlObject.setDeliveryDate(deliveryDateXml);
 		xmlObject.setDeliveryPortCode(order.getDeliveryPortCode());
 		xmlObject.setEntityId(order.getEntityId());
 		xmlObject.setEntityName(order.getEntityName());
@@ -52,7 +52,7 @@ public class MappingUtility {
 		XMLGregorianCalendar itemExpiryDateXml = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 
 		
-		xmlObject.setItemExpiry(itemExpiryDateXml);
+	    //xmlObject.setItemExpiry(itemExpiryDateXml);
 		xmlObject.setItemGlCode(orderLine.getItemGlCode());
 		xmlObject.setItemPrice(orderLine.getItemPrice());
 		xmlObject.setItemReceivingUnit(orderLine.getItemReceivingUnit());

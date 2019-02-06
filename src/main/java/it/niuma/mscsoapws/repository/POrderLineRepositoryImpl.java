@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
+import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
 import it.niuma.mscsoapws.model.POrderLine;
+import it.niuma.mscsoapws.ws.POrderLineXml;
 
 
 @Repository
@@ -35,6 +37,24 @@ public class POrderLineRepositoryImpl implements POrderLineRepository {
 		}
 
 	}
+
+	
+	@Override
+	public POrderLineXml findById(long id) {
+		  try (Connection con = sql2o.open()) {
+			  List<POrderLineXml> results = null;
+		    final String queryStringMode =
+		        "SELECT * FROM P_ORDERLINE WHERE ID = :ID";
+		    Query query = con.createQuery(queryStringMode).throwOnMappingFailure(false).addParameter("ID", id);
+		    try {
+		    	results = query.executeAndFetch(POrderLineXml.class);
+		    } catch (Exception ex) {
+		    	ex.printStackTrace();
+		    }
+		    POrderLineXml obj = results.get(0);
+		    return obj;
+		  }
+		}
 	
 	
 
