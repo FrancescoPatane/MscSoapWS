@@ -71,6 +71,25 @@
         </xs:complexType>
     </xs:element>
     
+    <xs:element name="createNewPLotRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="numeroOrdine" type="xs:string"/>
+                <xs:element name="numeroDDT" type="xs:string"/>
+                <xs:element name="dtEmissione" type="xs:dateTime"/>
+                <xs:element name="dtIngresso" type="xs:dateTime"/>                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="createNewPLotResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PLot" type="tns:PLotXml"/>            
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
     <xs:element name="getPOrderLineFromIDResponse">
         <xs:complexType>
             <xs:sequence>
@@ -136,18 +155,91 @@
 
 	<xs:complexType name="POrderXml">
 		<xs:sequence>
-			<xs:element name="poNumber" type="xs:string" />
+		    <xs:element name="id" type="xs:long"/>
+		    <xs:element name="interfaceID" type="xs:string"/>
 			<xs:element name="entityId" type="xs:string" />
+			<xs:element name="poInternalId" type="xs:long" />			
 			<xs:element name="entityName" type="xs:string" />
+			<xs:element name="entityGl" type="xs:string"/>
+			<xs:element name="hqID" type="xs:string" />
+			<xs:element name="invoicingHqCode" type="xs:string"/>
+			<xs:element name="poNumber" type="xs:string" />
 			<xs:element name="voyageCode" type="xs:string" />
 			<xs:element name="deliveryPortCode" type="xs:string" />
-			<xs:element name="poInternalId" type="xs:long" />
 			<xs:element name="deliveryDate" type="xs:dateTime" />
 			<xs:element name="createDate" type="xs:dateTime" />
 			<xs:element maxOccurs="unbounded" minOccurs="0" name="orderLines" type="tns:POrderLineXml"/>
 		</xs:sequence>
 	</xs:complexType>
 	
+	<xs:complexType name="PLotXml">
+	    <xs:sequence>
+	        <xs:element name="id" type="xs:decimal"/>
+	        <xs:element name="tpRecord" type="xs:string" minOccurs="0" default="TD"/>
+	        <xs:element name="cdDepositante" type="xs:string" minOccurs="0" default="MSC"/>
+	        <xs:element name="dtEmissione" type="xs:dateTime" minOccurs="0"/>
+	        <xs:element name="dfDocIngresso" type="xs:string" />
+	        <xs:element name="dtIngresso" type="xs:dateTime" minOccurs="0" />
+	        <xs:element name="cdCedente" type="xs:string"/>
+	        <xs:element name="tpCedente" type="xs:string" minOccurs="0" default="SUP"/>
+	        <xs:element name="stato" type="xs:decimal" minOccurs="0" />
+	        <xs:element name="inviatoDa" type="xs:decimal" minOccurs="0" />
+	        <xs:element name="dataInvio" type="xs:dateTime" minOccurs="0" />
+	        <xs:element name="email" type="xs:string" minOccurs="0"/>
+	        <xs:element name="poNumber" type="xs:string" minOccurs="0" />
+	        <xs:element name="ssccAvailable" type="xs:decimal" minOccurs="0" />
+	    </xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="PLotLineXml">
+	    <xs:sequence>
+	      <xs:element name="id" type="xs:decimal" />
+	      <xs:element name="idLot" type="xs:decimal" minOccurs="0" />
+	      <xs:element name="tpRecord" type="xs:string" minOccurs="0"/>
+	      <xs:element name="cdDepositante" type="xs:string" minOccurs="0"/>
+	      <xs:element name="cdCollo" type="xs:string" minOccurs="0" />
+	      <xs:element name="nrRiga" type="xs:decimal" />
+	      <xs:element name="cdGtin" type="xs:string" />
+	      <xs:element name="cdArticolo" type="xs:string" /> 
+	      <xs:element name="cdVoceDoganale" type="xs:string" minOccurs="0" />
+	      <xs:element name="cdMisura" type="xs:string" />
+	      <xs:element name="flPesoVariabile" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="nrPrezzo" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="dfValuta" type="xs:string" minOccurs="0" />
+	      <xs:element name="stContabile" type="xs:string" minOccurs="0"/>
+	      <xs:element name="nrLotto" type="xs:string" minOccurs="0" />
+	      <xs:element name="qtPrevista" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="nrNetto" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="nrLordo" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="nrColli" type="xs:decimal" minOccurs="0" />
+	      <xs:element name="nrPzConf" type="xs:decimal" minOccurs="0" />
+	      <xs:element name="nrListaIngresso" type="xs:string" minOccurs="0" />
+	      <xs:element name="tpListaIngresso" type="xs:string" minOccurs="0" />
+	      <xs:element name="nrRigaListaIngresso" type="xs:string" minOccurs="0"/>
+	      <xs:element name="cdProprietarioStock" type="xs:string" minOccurs="0"/>
+	      <xs:element name="tpProprietarioStock" type="xs:string" minOccurs="0" />
+	      <xs:element name="dtScadenza" type="xs:dateTime" minOccurs="0" />
+	      <xs:element name="cdPaeseOrigine" type="xs:string" minOccurs="0"/>
+	      <xs:element name="cdPaeseProvenienza" type="xs:string" minOccurs="0"/>
+	      <xs:element name="dfDvce" type="xs:string" minOccurs="0"/>
+	      <xs:element name="dtDvce" type="xs:dateTime" minOccurs="0"/>
+	      <xs:element name="dfAnimo" type="xs:string" minOccurs="0"/>
+	      <xs:element name="dfSif" type="xs:string" minOccurs="0"/>
+	      <xs:element name="flDogana" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="flContainer" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="dfFattura" type="xs:string" minOccurs="0"/>
+	      <xs:element name="dtFattura" type="xs:dateTime" minOccurs="0"/>
+	      <xs:element name="dfMrn" type="xs:string" minOccurs="0"/>
+	      <xs:element name="cdClienteRiserva" type="xs:string" minOccurs="0"/>
+	      <xs:element name="tpClienteRiserva" type="xs:string" minOccurs="0"/>
+	      <xs:element name="dfRiserva" type="xs:string" minOccurs="0"/>
+	      <xs:element name="stato" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="compilatoDa" type="xs:decimal" minOccurs="0"/>
+	      <xs:element name="dataCompilazione" type="xs:dateTime" minOccurs="0"/>
+	      <xs:element name="palletID" type="xs:string" minOccurs="0"/>
+	      <xs:element name="moq" type="xs:decimal" minOccurs="0"/>   
+	    </xs:sequence>	    
+	</xs:complexType>
 	
 
 </xs:schema>

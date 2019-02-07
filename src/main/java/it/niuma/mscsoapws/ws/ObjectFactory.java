@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 12:52:41 PM CET 
+// Generato il: 2019.02.06 alle 05:46:57 PM CET 
 //
 
 
@@ -85,6 +85,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateNewPLotResponse }
+     * 
+     */
+    public CreateNewPLotResponse createCreateNewPLotResponse() {
+        return new CreateNewPLotResponse();
+    }
+
+    /**
+     * Create an instance of {@link PLotXml }
+     * 
+     */
+    public PLotXml createPLotXml() {
+        return new PLotXml();
+    }
+
+    /**
      * Create an instance of {@link GetPOrderLineFromItemExpiryResponse }
      * 
      */
@@ -125,11 +141,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CreateNewPLotRequest }
+     * 
+     */
+    public CreateNewPLotRequest createCreateNewPLotRequest() {
+        return new CreateNewPLotRequest();
+    }
+
+    /**
      * Create an instance of {@link GetPOrderLineFromID }
      * 
      */
     public GetPOrderLineFromID createGetPOrderLineFromID() {
         return new GetPOrderLineFromID();
+    }
+
+    /**
+     * Create an instance of {@link PLotLineXml }
+     * 
+     */
+    public PLotLineXml createPLotLineXml() {
+        return new PLotLineXml();
     }
 
 }
