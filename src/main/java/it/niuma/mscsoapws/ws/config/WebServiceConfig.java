@@ -22,6 +22,9 @@ import org.springframework.ws.soap.server.endpoint.interceptor.PayloadRootSmartS
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+import it.niuma.mscsoapws.ws.endpoint.ServiceEndpoint;
+import it.niuma.mscsoapws.ws.interceptor.CustomEndpointInterceptor;
+
 //import it.niuma.SoapMsc.ws.interceptor.CustomEndpointInterceptor;
 //import it.niuma.SoapMsc.ws.interceptor.CustomSmartEndpointInterceptor;
 
@@ -52,20 +55,20 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 
 
-//	@Bean
-//	public EndpointInterceptor endPointInterceptor() {
-//		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
-//		return interceptor;
-//	}
-//
-//
-//	@Bean
-//	public SmartEndpointInterceptor addSmartEndpointInterceptor(){
-//
-//		PayloadRootSmartSoapEndpointInterceptor smartInterceptor = 
-//				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), "it.niuma.SoapMsc.ws", "loginRequest");
-//
-//		return smartInterceptor;
-//	}    
+	@Bean
+	public EndpointInterceptor endPointInterceptor() {
+		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
+		return interceptor;
+	}
+
+
+	@Bean
+	public SmartEndpointInterceptor addSmartEndpointInterceptor(){
+
+		PayloadRootSmartSoapEndpointInterceptor smartInterceptor = 
+				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), ServiceEndpoint.NAMESPACE, "getPOrderRequest");
+
+		return smartInterceptor;
+	}    
 
 }

@@ -16,16 +16,18 @@ import it.niuma.mscsoapws.ws.PLotXml;
 import it.niuma.mscsoapws.ws.POrderLineXml;
 import it.niuma.mscsoapws.ws.POrderXml;
 import it.niuma.mscsoapws.ws.util.MappingUtility;
+import it.niuma.mscsoapws.ws.util.AuthUtility;
 
 
 @Service 
 public class BusinessService {
 	
 	@Autowired
-	POrderRepository pOrderRepository;
+	private POrderRepository pOrderRepository;
 	
 	@Autowired
-	POrderLineRepository pOrderLineRepository;
+
+	private POrderLineRepository pOrderLineRepository;
 
 	
 	@Autowired
