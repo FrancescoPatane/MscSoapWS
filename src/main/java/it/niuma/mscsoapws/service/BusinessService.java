@@ -1,22 +1,13 @@
 package it.niuma.mscsoapws.service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import it.niuma.mscsoapws.ws.POrderLineXml;
+import it.niuma.mscsoapws.ws.POrderXml;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.niuma.mscsoapws.model.POrder;
-import it.niuma.mscsoapws.model.POrderLine;
-import it.niuma.mscsoapws.repository.PLotRepository;
 import it.niuma.mscsoapws.repository.POrderLineRepository;
 import it.niuma.mscsoapws.repository.POrderRepository;
-import it.niuma.mscsoapws.ws.PLotXml;
-import it.niuma.mscsoapws.ws.POrderLineXml;
-import it.niuma.mscsoapws.ws.POrderXml;
 import it.niuma.mscsoapws.ws.util.MappingUtility;
-import it.niuma.mscsoapws.ws.util.AuthUtility;
 
 
 @Service 
@@ -50,6 +41,11 @@ public class BusinessService {
 		}
 		
 		return orderXml;*/
+	}
+
+	public POrderLineXml findPOrderLineById (long id) {
+		POrderLineXml found = pOrderLineRepository.findById(id);
+		return found;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -86,8 +87,25 @@ public class PLotRepositoryImpl implements PLotRepository {
 		PLotXml pLot = null;
 		try (Connection con = sql2o.open()) {
 			String queryStringMode = "SELECT * FROM P_LOT WHERE PONUMBER = :ORDERID";
-
+			HashMap<String, String> columnMappings = new HashMap<>();
+			columnMappings.put("ID","id");
+			columnMappings.put("TP_RECORD", "tpRecord");
+			columnMappings.put("CD_DEPOSITANTE", "cdDepositante");
+			columnMappings.put("DT_EMISSIONE", "dtEmissione");
+			columnMappings.put("DF_DOCINGRESSO", "dfDocIngresso");
+			columnMappings.put("DT_INGRESSO", "dtIngresso");
+			columnMappings.put("CD_CEDENTE", "cdCedente");
+			columnMappings.put("TP_CEDENTE", "tpCedente");
+			columnMappings.put("STATO", "stato");
+			columnMappings.put("INVIATO_DA", "inviatoDa");
+			columnMappings.put("DATA_INVIO", "dataInvio");
+			columnMappings.put("EMAIL", "email");
+			columnMappings.put("PONUMBER","poNumber");
+			columnMappings.put("SSCC_AVAILABLE", "ssccAvailable");
 			Query query =  con.createQuery(queryStringMode).addParameter("ORDERID", orderID);
+			for (String key : columnMappings.keySet()) {
+				query = query.addColumnMapping(key, columnMappings.get(key));
+			}
 			try {
 				List<PLotXml> results = query.executeAndFetch(PLotXml.class);
 				pLot = results != null && results.size() > 0 ? results.get(0) : pLot;

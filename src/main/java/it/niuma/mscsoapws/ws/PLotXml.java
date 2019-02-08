@@ -1,7 +1,7 @@
 //
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
+// Questo file ï¿½ stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
+// Qualsiasi modifica a questo file andrï¿½ persa durante la ricompilazione dello schema di origine. 
 // Generato il: 2019.02.06 alle 05:46:57 PM CET 
 //
 
@@ -100,7 +100,7 @@ public class PLotXml {
     protected BigDecimal ssccAvailable;
 
     /**
-     * Recupera il valore della proprietà id.
+     * Recupera il valore della proprietï¿½ id.
      * 
      * @return
      *     possible object is
@@ -112,7 +112,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Imposta il valore della proprietï¿½ id.
      * 
      * @param value
      *     allowed object is
@@ -124,7 +124,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpRecord.
+     * Recupera il valore della proprietï¿½ tpRecord.
      * 
      * @return
      *     possible object is
@@ -136,7 +136,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpRecord.
+     * Imposta il valore della proprietï¿½ tpRecord.
      * 
      * @param value
      *     allowed object is
@@ -148,7 +148,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdDepositante.
+     * Recupera il valore della proprietï¿½ cdDepositante.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdDepositante.
+     * Imposta il valore della proprietï¿½ cdDepositante.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà dtEmissione.
+     * Recupera il valore della proprietï¿½ dtEmissione.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà dtEmissione.
+     * Imposta il valore della proprietï¿½ dtEmissione.
      * 
      * @param value
      *     allowed object is
@@ -196,7 +196,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfDocIngresso.
+     * Recupera il valore della proprietï¿½ dfDocIngresso.
      * 
      * @return
      *     possible object is
@@ -208,7 +208,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfDocIngresso.
+     * Imposta il valore della proprietï¿½ dfDocIngresso.
      * 
      * @param value
      *     allowed object is
@@ -220,7 +220,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà dtIngresso.
+     * Recupera il valore della proprietï¿½ dtIngresso.
      * 
      * @return
      *     possible object is
@@ -232,7 +232,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà dtIngresso.
+     * Imposta il valore della proprietï¿½ dtIngresso.
      * 
      * @param value
      *     allowed object is
@@ -244,7 +244,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdCedente.
+     * Recupera il valore della proprietï¿½ cdCedente.
      * 
      * @return
      *     possible object is
@@ -256,7 +256,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdCedente.
+     * Imposta il valore della proprietï¿½ cdCedente.
      * 
      * @param value
      *     allowed object is
@@ -268,7 +268,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpCedente.
+     * Recupera il valore della proprietï¿½ tpCedente.
      * 
      * @return
      *     possible object is
@@ -280,7 +280,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpCedente.
+     * Imposta il valore della proprietï¿½ tpCedente.
      * 
      * @param value
      *     allowed object is
@@ -292,7 +292,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà stato.
+     * Recupera il valore della proprietï¿½ stato.
      * 
      * @return
      *     possible object is
@@ -304,7 +304,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà stato.
+     * Imposta il valore della proprietï¿½ stato.
      * 
      * @param value
      *     allowed object is
@@ -316,7 +316,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà inviatoDa.
+     * Recupera il valore della proprietï¿½ inviatoDa.
      * 
      * @return
      *     possible object is
@@ -328,7 +328,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà inviatoDa.
+     * Imposta il valore della proprietï¿½ inviatoDa.
      * 
      * @param value
      *     allowed object is
@@ -340,7 +340,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà dataInvio.
+     * Recupera il valore della proprietï¿½ dataInvio.
      * 
      * @return
      *     possible object is
@@ -352,7 +352,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà dataInvio.
+     * Imposta il valore della proprietï¿½ dataInvio.
      * 
      * @param value
      *     allowed object is
@@ -364,7 +364,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà email.
+     * Recupera il valore della proprietï¿½ email.
      * 
      * @return
      *     possible object is
@@ -376,7 +376,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà email.
+     * Imposta il valore della proprietï¿½ email.
      * 
      * @param value
      *     allowed object is
@@ -388,7 +388,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà poNumber.
+     * Recupera il valore della proprietï¿½ poNumber.
      * 
      * @return
      *     possible object is
@@ -400,7 +400,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà poNumber.
+     * Imposta il valore della proprietï¿½ poNumber.
      * 
      * @param value
      *     allowed object is
@@ -412,7 +412,7 @@ public class PLotXml {
     }
 
     /**
-     * Recupera il valore della proprietà ssccAvailable.
+     * Recupera il valore della proprietï¿½ ssccAvailable.
      * 
      * @return
      *     possible object is
@@ -424,7 +424,7 @@ public class PLotXml {
     }
 
     /**
-     * Imposta il valore della proprietà ssccAvailable.
+     * Imposta il valore della proprietï¿½ ssccAvailable.
      * 
      * @param value
      *     allowed object is

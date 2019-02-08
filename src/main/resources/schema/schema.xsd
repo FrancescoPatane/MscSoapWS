@@ -161,13 +161,56 @@
 			<xs:element name="poInternalId" type="xs:long" />			
 			<xs:element name="entityName" type="xs:string" />
 			<xs:element name="entityGl" type="xs:string"/>
-			<xs:element name="hqID" type="xs:string" />
+			<xs:element name="hqID" type="xs:string"/>
+			<xs:element name="hqGl" type="xs:string"/>
 			<xs:element name="invoicingHqCode" type="xs:string"/>
-			<xs:element name="poNumber" type="xs:string" />
-			<xs:element name="voyageCode" type="xs:string" />
-			<xs:element name="deliveryPortCode" type="xs:string" />
-			<xs:element name="deliveryDate" type="xs:dateTime" />
+			<xs:element name="invoicingHqName" type="xs:string"/>
+			<xs:element name="buyerGroup" type="xs:string"/>
+			<xs:element name="deliveryDate" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="createDate" type="xs:dateTime" />
+			<xs:element name="deliveryPortCode" type="xs:string" />
+			<xs:element name="voyageCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="poNumber" type="xs:string"/>
+			<xs:element name="orderRequestID" type="xs:long"/>
+			<xs:element name="vendorCode" type="xs:string"/>
+			<xs:element name="vendorName" type="xs:string" minOccurs="0"/>
+			<xs:element name="vendorGL" type="xs:string" />
+			<xs:element name="vendorExternalCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="paymentTerms" type="xs:string" />
+			<xs:element name="deliveryTerms" type="xs:string" />
+			<xs:element name="portAgentCode" type="xs:string" />
+			<xs:element name="portAgentName" type="xs:string"/>
+			<xs:element name="currency" type="xs:string"/>
+			<xs:element name="currencyRate" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="documentValue" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="coEnabled" type="xs:int" />
+			<xs:element name="coVendorCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="coVendorName" type="xs:string" minOccurs="0"/>
+			<xs:element name="coDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="container" type="xs:int" />
+			<xs:element name="discountGlobal" type="xs:decimal" minOccurs="0" />
+			<xs:element name="taxGlobal" type="xs:decimal" minOccurs="0" />
+			<xs:element name="fullName" type="xs:string" minOccurs="0" />
+			<xs:element name="documentComment" type="xs:string" minOccurs="0" />
+			<xs:element name="parentPoID" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="poCancelledStatus" type="xs:int"/>
+			<xs:element name="exportFileRevision" type="xs:string" minOccurs="0"/>
+			<xs:element name="externalRequestID" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="destinationPoc" type="xs:string" minOccurs="0"/>
+			<xs:element name="statusID" type="xs:int" />
+			<xs:element name="coDateSupplier" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="deliveryPortName" type="xs:string" minOccurs="0"/>
+			<xs:element name="inviatoDa" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="dataInvio" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="checkValue" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="saved" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="viewed" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="infoContainer" type="xs:string" minOccurs="0"/>
+			<xs:element name="rejectionReason" type="xs:string" minOccurs="0"/>
+			<xs:element name="logistic" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="limitToSend" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="division" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="invoice" type="xs:decimal" minOccurs="0"/>
 			<xs:element maxOccurs="unbounded" minOccurs="0" name="orderLines" type="tns:POrderLineXml"/>
 		</xs:sequence>
 	</xs:complexType>

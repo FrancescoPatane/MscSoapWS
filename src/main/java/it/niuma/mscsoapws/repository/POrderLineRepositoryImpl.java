@@ -1,22 +1,28 @@
 package it.niuma.mscsoapws.repository;
 
+import java.util.HashMap;
 import java.util.List;
 
+import it.niuma.mscsoapws.ws.POrderLineXml;
+import it.niuma.mscsoapws.ws.POrderXml;
+import it.niuma.mscsoapws.ws.util.MappingUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
 import it.niuma.mscsoapws.model.POrderLine;
-import it.niuma.mscsoapws.ws.POrderLineXml;
 
 
 @Repository
 public class POrderLineRepositoryImpl implements POrderLineRepository {
 	
 	private final Sql2o sql2o;
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	
+
 	public POrderLineRepositoryImpl(Sql2o sql2o){
 		this.sql2o = sql2o;
 	}
@@ -41,12 +47,16 @@ public class POrderLineRepositoryImpl implements POrderLineRepository {
 	
 	@Override
 	public POrderLineXml findById(long id) {
+		List<String> columnNames = MappingUtility.getColumnsNames(sql2o, "P_ORDERLINE");
+		List<POrderLineXml> results = null;
+		HashMap<String, String> mapOfColumns = MappingUtility.getMappingForDb(POrderLineXml.class, columnNames);
 		  try (Connection con = sql2o.open()) {
-			  List<POrderLineXml> results = null;
 		    final String queryStringMode =
 		        "SELECT * FROM P_ORDERLINE WHERE ID = :ID";
-		    Query query = con.createQuery(queryStringMode).throwOnMappingFailure(false).addParameter("ID", id);
-		    try {
+		    Query query = con.createQuery(queryStringMode).addParameter("ID", id);
+			  for (String key : mapOfColumns.keySet()) {
+				  query = query.addColumnMapping(key, mapOfColumns.get(key));
+			  }
 		    	results = query.executeAndFetch(POrderLineXml.class);
 		    } catch (Exception ex) {
 		    	ex.printStackTrace();
@@ -55,7 +65,3 @@ public class POrderLineRepositoryImpl implements POrderLineRepository {
 		    return obj;
 		  }
 		}
-	
-	
-
-}
