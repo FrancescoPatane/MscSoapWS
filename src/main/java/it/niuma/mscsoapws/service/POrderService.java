@@ -43,7 +43,6 @@ public class POrderService {
 				throw new PorderNotFoundException("No order found for order number: " + orderNumber);
 			}
 		} catch (PorderNotFoundException e) {
-			// TODO Auto-generated catch block
 			throw e;
 		} catch (Exception e) {
 			throw new ServerErrorException("Error executing request getPOrderFromOrderNumber for order number:" + orderNumber);

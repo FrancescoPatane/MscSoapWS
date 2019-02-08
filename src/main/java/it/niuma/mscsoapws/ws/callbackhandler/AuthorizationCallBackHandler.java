@@ -8,6 +8,8 @@ import javax.security.auth.callback.CallbackHandler;
 import javax.security.auth.callback.UnsupportedCallbackException;
 
 import org.apache.wss4j.common.ext.WSPasswordCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import it.niuma.mscsoapws.model.VnWsCredential;
@@ -15,6 +17,8 @@ import it.niuma.mscsoapws.repository.VnWsCredentialRepository;
 
 
 public class AuthorizationCallBackHandler implements CallbackHandler{
+	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	VnWsCredentialRepository credentialsRepo;
@@ -27,9 +31,10 @@ public class AuthorizationCallBackHandler implements CallbackHandler{
 			
 			String username = pc.getIdentifier();
 			VnWsCredential credentials = credentialsRepo.findByUsername(username);
+			logger.info("Request of authentication for username" + username);
+			
 			// set the password on the callback. This will be compared to the
 			// password which was sent from the client.
-
 			if (credentials == null) {
 				pc.setPassword(null);
 			}else {

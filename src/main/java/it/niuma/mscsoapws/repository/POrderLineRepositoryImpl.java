@@ -2,18 +2,20 @@ package it.niuma.mscsoapws.repository;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
-import it.niuma.mscsoapws.model.POrderLine;
 import it.niuma.mscsoapws.ws.POrderLineXml;
 
 
 @Repository
 public class POrderLineRepositoryImpl implements POrderLineRepository {
 	
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private final Sql2o sql2o;
 
 	
@@ -29,6 +31,7 @@ public class POrderLineRepositoryImpl implements POrderLineRepository {
 			List<POrderLineXml> results = con.createQuery(query).addParameter("orderId", orderId).executeAndFetch(POrderLineXml.class);
 			return results;
 		} catch (Exception e) {
+			logger.error("findByOrderId error for order id:" + orderId);
 			e.printStackTrace();
 			throw e;
 		}
