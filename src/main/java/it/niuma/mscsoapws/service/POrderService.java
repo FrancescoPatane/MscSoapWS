@@ -15,41 +15,41 @@ import it.niuma.mscsoapws.repository.POrderRepository;
 import it.niuma.mscsoapws.ws.PLotXml;
 import it.niuma.mscsoapws.ws.POrderLineXml;
 import it.niuma.mscsoapws.ws.POrderXml;
+import it.niuma.mscsoapws.ws.exception.PorderNotFoundException;
+import it.niuma.mscsoapws.ws.exception.ServerErrorException;
 import it.niuma.mscsoapws.ws.util.MappingUtility;
 import it.niuma.mscsoapws.ws.util.AuthUtility;
 
 
 @Service 
-public class BusinessService {
+public class POrderService {
 	
 	@Autowired
 	private POrderRepository pOrderRepository;
 	
 	@Autowired
-
 	private POrderLineRepository pOrderLineRepository;
 
 	
-	@Autowired
-	private MappingUtility mappingUtility;
-	
-	public POrderXml getPOrderFromOrderNumber(String orderNumber) throws Exception {
+	public POrderXml getPOrderFromOrderNumber(String orderNumber) throws PorderNotFoundException, ServerErrorException {
 		
-		POrderXml found = pOrderRepository.findByPoNumber(orderNumber);
-		return found;
-		//Old stuff, keeping it for just in case situation...
-		/*POrder pOrder = pOrderRepository.findByPoNumber(orderNumber);
-		POrderXml orderXml = mappingUtility.getPOrderXmlFromModel(pOrder);
-		long orderId = pOrder.getId();
-		List<POrderLine> orderLines = pOrderLineRepository.findByOrderId(orderId);
-		List<POrderLineXml> orderLinesXml = orderXml.getOrderLines();
-		if (orderLines != null ) {
-			for (POrderLine orderLine : orderLines) {
-				orderLinesXml.add(mappingUtility.getPOrderLineXmlFromModel(orderLine));
+		POrderXml pOrder;
+		try {
+			pOrder = pOrderRepository.findByPoNumber(orderNumber);
+			if (pOrder != null) {
+				pOrder.getOrderLines().addAll(pOrderLineRepository.findByOrderId(pOrder.getId()));
+				return pOrder;
+			}else {
+				throw new PorderNotFoundException("No order found for order number: " + orderNumber);
 			}
+		} catch (PorderNotFoundException e) {
+			// TODO Auto-generated catch block
+			throw e;
+		} catch (Exception e) {
+			throw new ServerErrorException("Error executing request getPOrderFromOrderNumber for order number:" + orderNumber);
 		}
+
 		
-		return orderXml;*/
 	}
 
 }

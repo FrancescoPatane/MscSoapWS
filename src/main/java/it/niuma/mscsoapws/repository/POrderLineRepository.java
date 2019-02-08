@@ -8,7 +8,7 @@ import it.niuma.mscsoapws.ws.POrderLineXml;
 
 public interface POrderLineRepository {
 	
-	public List<POrderLine> findByOrderId(long orderId);
+	public List<POrderLineXml> findByOrderId(long orderId);
 	
 	public POrderLineXml findById(long id);
 

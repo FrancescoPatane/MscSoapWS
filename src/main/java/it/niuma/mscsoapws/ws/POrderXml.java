@@ -2,7 +2,7 @@
 // Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
 // Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 05:46:57 PM CET 
+// Generato il: 2019.02.08 alle 04:02:35 PM CET 
 //
 
 
@@ -29,12 +29,17 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="poNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="interfaceID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="entityId" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="poInternalId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="entityName" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="entityGl" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="hqID" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="invoicingHqCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="poNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="voyageCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="deliveryPortCode" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="poInternalId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="deliveryDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         &lt;element name="createDate" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
  *         &lt;element name="orderLines" type="{it.niuma.mscsoapws.ws}POrderLineXml" maxOccurs="unbounded" minOccurs="0"/>
@@ -48,29 +53,43 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "POrderXml", propOrder = {
-    "poNumber",
+    "id",
+    "interfaceID",
     "entityId",
+    "poInternalId",
     "entityName",
+    "entityGl",
+    "hqID",
+    "invoicingHqCode",
+    "poNumber",
     "voyageCode",
     "deliveryPortCode",
-    "poInternalId",
     "deliveryDate",
     "createDate",
     "orderLines"
 })
 public class POrderXml {
 
+    protected long id;
     @XmlElement(required = true)
-    protected String poNumber;
+    protected String interfaceID;
     @XmlElement(required = true)
     protected String entityId;
+    protected long poInternalId;
     @XmlElement(required = true)
     protected String entityName;
+    @XmlElement(required = true)
+    protected String entityGl;
+    @XmlElement(required = true)
+    protected String hqID;
+    @XmlElement(required = true)
+    protected String invoicingHqCode;
+    @XmlElement(required = true)
+    protected String poNumber;
     @XmlElement(required = true)
     protected String voyageCode;
     @XmlElement(required = true)
     protected String deliveryPortCode;
-    protected long poInternalId;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
@@ -82,27 +101,43 @@ public class POrderXml {
     protected List<POrderLineXml> orderLines;
 
     /**
-     * Recupera il valore della proprietà poNumber.
+     * Recupera il valore della proprietà id.
+     * 
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Imposta il valore della proprietà id.
+     * 
+     */
+    public void setId(long value) {
+        this.id = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà interfaceID.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPoNumber() {
-        return poNumber;
+    public String getInterfaceID() {
+        return interfaceID;
     }
 
     /**
-     * Imposta il valore della proprietà poNumber.
+     * Imposta il valore della proprietà interfaceID.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPoNumber(String value) {
-        this.poNumber = value;
+    public void setInterfaceID(String value) {
+        this.interfaceID = value;
     }
 
     /**
@@ -130,6 +165,22 @@ public class POrderXml {
     }
 
     /**
+     * Recupera il valore della proprietà poInternalId.
+     * 
+     */
+    public long getPoInternalId() {
+        return poInternalId;
+    }
+
+    /**
+     * Imposta il valore della proprietà poInternalId.
+     * 
+     */
+    public void setPoInternalId(long value) {
+        this.poInternalId = value;
+    }
+
+    /**
      * Recupera il valore della proprietà entityName.
      * 
      * @return
@@ -151,6 +202,102 @@ public class POrderXml {
      */
     public void setEntityName(String value) {
         this.entityName = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà entityGl.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEntityGl() {
+        return entityGl;
+    }
+
+    /**
+     * Imposta il valore della proprietà entityGl.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEntityGl(String value) {
+        this.entityGl = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà hqID.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getHqID() {
+        return hqID;
+    }
+
+    /**
+     * Imposta il valore della proprietà hqID.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setHqID(String value) {
+        this.hqID = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà invoicingHqCode.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getInvoicingHqCode() {
+        return invoicingHqCode;
+    }
+
+    /**
+     * Imposta il valore della proprietà invoicingHqCode.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setInvoicingHqCode(String value) {
+        this.invoicingHqCode = value;
+    }
+
+    /**
+     * Recupera il valore della proprietà poNumber.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPoNumber() {
+        return poNumber;
+    }
+
+    /**
+     * Imposta il valore della proprietà poNumber.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPoNumber(String value) {
+        this.poNumber = value;
     }
 
     /**
@@ -199,22 +346,6 @@ public class POrderXml {
      */
     public void setDeliveryPortCode(String value) {
         this.deliveryPortCode = value;
-    }
-
-    /**
-     * Recupera il valore della proprietà poInternalId.
-     * 
-     */
-    public long getPoInternalId() {
-        return poInternalId;
-    }
-
-    /**
-     * Imposta il valore della proprietà poInternalId.
-     * 
-     */
-    public void setPoInternalId(long value) {
-        this.poInternalId = value;
     }
 
     /**

@@ -12,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import it.niuma.mscsoapws.model.VnWsCredential;
-import it.niuma.mscsoapws.service.BusinessService;
+import it.niuma.mscsoapws.service.POrderService;
 import it.niuma.mscsoapws.service.PLotService;
 import it.niuma.mscsoapws.ws.CreateNewPLotRequest;
 import it.niuma.mscsoapws.ws.CreateNewPLotResponse;
@@ -23,6 +23,8 @@ import it.niuma.mscsoapws.ws.LoginResponse;
 import it.niuma.mscsoapws.ws.PLotXml;
 import it.niuma.mscsoapws.ws.POrderXml;
 import it.niuma.mscsoapws.ws.exception.InvalidCredentialsException;
+import it.niuma.mscsoapws.ws.exception.PorderNotFoundException;
+import it.niuma.mscsoapws.ws.exception.ServerErrorException;
 import it.niuma.mscsoapws.ws.util.AuthUtility;
 
 
@@ -32,7 +34,7 @@ public class ServiceEndpoint {
 	public static final String NAMESPACE= "it.niuma.mscsoapws.ws";
 	
 	@Autowired
-	private BusinessService service;
+	private POrderService service;
 	
 	@Autowired
 	private AuthUtility authUtil;
@@ -42,7 +44,7 @@ public class ServiceEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE, localPart = "getPOrderRequest")
 	@ResponsePayload
-	public GetPOrderResponse getPOrderRequest(@RequestPayload GetPOrderRequest request) throws Exception {
+	public GetPOrderResponse getPOrderRequest(@RequestPayload GetPOrderRequest request) throws PorderNotFoundException, ServerErrorException  {
 		GetPOrderResponse response = new GetPOrderResponse();
 		POrderXml pOrder = service.getPOrderFromOrderNumber(request.getPoNumber());
 		response.setPOrder(pOrder);
