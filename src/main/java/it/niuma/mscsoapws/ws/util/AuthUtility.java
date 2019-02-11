@@ -1,5 +1,7 @@
 package it.niuma.mscsoapws.ws.util;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -13,7 +15,6 @@ import it.niuma.mscsoapws.model.WsAccessToken;
 import it.niuma.mscsoapws.repository.VnWsCredentialRepository;
 import it.niuma.mscsoapws.repository.WsAccessTokenRepository;
 import it.niuma.mscsoapws.ws.exception.InvalidTokenException;
-import it.niuma.mscsoapws.ws.exception.TokenNotFoundException;
 
 @Component
 public class AuthUtility {
@@ -26,6 +27,40 @@ public class AuthUtility {
 
 	@Autowired
 	private WsAccessTokenRepository tokenRepository;
+	
+	
+	public String obtaindMD5Value(String toConvert){
+
+		String md5val = "";
+
+		MessageDigest digester;
+		try {
+			digester = MessageDigest.getInstance("MD5");
+			digester.reset();
+			digester.update(toConvert.getBytes());
+			byte pwdDigest[] = digester.digest();
+
+			 StringBuffer hexString = new StringBuffer();
+
+	         for (int i = 0; i < pwdDigest.length; i++)
+	         {
+	             String hex = Integer.toHexString(0xFF & pwdDigest[i]);
+	             if (hex.length() == 1)
+	             {
+	                 hexString.append('0');
+	             }
+	             hexString.append(hex);
+	         }
+	         md5val = hexString.toString();
+
+		}
+		catch (NoSuchAlgorithmException exc) {
+			exc.printStackTrace();
+		}
+
+         return md5val;
+	}
+	
 
 	public String generateToken(VnWsCredential vnWsCredential) {
 

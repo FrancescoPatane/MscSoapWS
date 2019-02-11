@@ -72,15 +72,16 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	
 	    @Override
 	    public void addInterceptors(List interceptors) {
-	        interceptors.add(securityInterceptor());
+//	        interceptors.add(securityInterceptor());
+	    	interceptors.add(endPointInterceptor());
 	    }
 
 
-//	@Bean
-//	public EndpointInterceptor endPointInterceptor() {
-//		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
-//		return interceptor;
-//	}
+	@Bean
+	public EndpointInterceptor endPointInterceptor() {
+		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
+		return interceptor;
+	}
 //
 //
 //	@Bean

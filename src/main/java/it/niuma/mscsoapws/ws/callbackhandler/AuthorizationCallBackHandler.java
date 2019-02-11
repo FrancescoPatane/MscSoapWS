@@ -11,9 +11,11 @@ import org.apache.wss4j.common.ext.WSPasswordCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ws.soap.security.wss4j2.callback.UsernameTokenPrincipalCallback;
 
 import it.niuma.mscsoapws.model.VnWsCredential;
 import it.niuma.mscsoapws.repository.VnWsCredentialRepository;
+import it.niuma.mscsoapws.ws.util.AuthUtility;
 
 
 public class AuthorizationCallBackHandler implements CallbackHandler{
@@ -22,6 +24,9 @@ public class AuthorizationCallBackHandler implements CallbackHandler{
 	
 	@Autowired
 	VnWsCredentialRepository credentialsRepo;
+	
+	@Autowired
+	AuthUtility authUtil;
 	
 	@Override
 	public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
@@ -32,17 +37,25 @@ public class AuthorizationCallBackHandler implements CallbackHandler{
 			String username = pc.getIdentifier();
 			VnWsCredential credentials = credentialsRepo.findByUsername(username);
 			logger.info("Request of authentication for username" + username);
-			
+			String p =				pc.getPassword();
 			// set the password on the callback. This will be compared to the
 			// password which was sent from the client.
 			if (credentials == null) {
 				pc.setPassword(null);
+				
+
 			}else {
+//				String encodedPsw = authUtil.obtaindMD5Value(credentials.getPassword()); 
+//				pc.setPassword(encodedPsw);
 				pc.setPassword(credentials.getPassword());
 			}
 						
 		}
 		
+		if (callbacks[0] instanceof UsernameTokenPrincipalCallback) {
+			UsernameTokenPrincipalCallback pc = (UsernameTokenPrincipalCallback) callbacks[0];
+			pc.getPrincipal();
+		}
 		
 
 

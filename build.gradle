@@ -33,3 +33,62 @@ dependencies {
 	compile("wsdl4j:wsdl4j:1.6.1")
 	compile group: 'org.springframework.ws', name: 'spring-ws-security', version: '3.0.6.RELEASE'
 }
+
+
+remotes {
+  server {
+    host = project.hasProperty('ip') ? ip : '' 
+    user = 'root'
+    password = '#NiumaITAdm@14'
+  }
+}
+
+ssh.settings {
+  logging = 'stdout'
+    knownHosts = allowAnyHosts
+}
+
+task copyjar {
+  doLast {
+    if (!project.hasProperty('ip')){
+      logger.lifecycle("No IP - Launch with -Pip=xxx.xxx.xxx.xxx");
+      throw new StopExecutionException()
+    }
+    logger.lifecycle("Copying... <$jarPath to $deployPath>") 
+    ssh.run{
+      session(remotes.server) {
+        put from: jarPath, into: deployPath
+      }
+    }
+  }
+}
+
+task stopServer {
+  doLast {
+    if (!project.hasProperty('ip')){
+      logger.lifecycle("No IP - Launch with -Pip=xxx.xxx.xxx.xxx");
+      throw new StopExecutionException()
+    }
+    logger.lifecycle("Execute stopServer on $remotes.server.host");
+    ssh.run {
+      session(remotes.server) {
+        execute 'systemctl stop alboFornitori.service'
+      }
+    }
+  }
+}
+
+task startServer{
+  doLast {
+    if (!project.hasProperty('ip')){
+      logger.lifecycle("No IP - Launch with -Pip=xxx.xxx.xxx.xxx");
+      throw new StopExecutionException()
+    }
+    logger.lifecycle("Execute stopServer on $remotes.server.host");
+      ssh.run {
+        session(remotes.server) {
+        execute 'systemctl start alboFornitori.service'
+      }
+    }
+  }
+}
