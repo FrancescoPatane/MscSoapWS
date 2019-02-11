@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 05:46:57 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -34,7 +27,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  *         &lt;element name="cdDepositante" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="cdCollo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="nrRiga" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
- *         &lt;element name="cdGtin" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="cdGtin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="cdArticolo" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="cdVoceDoganale" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="cdMisura" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -82,7 +75,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PLotLineXml", propOrder = {
+@XmlType(name = "PLotLineXml", namespace = "it.niuma.mscsoapws.ws", propOrder = {
     "id",
     "idLot",
     "tpRecord",
@@ -131,71 +124,107 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class PLotLineXml {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected BigDecimal id;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal idLot;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "TR")
     protected String tpRecord;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "MSC")
     protected String cdDepositante;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdCollo;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected BigDecimal nrRiga;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdGtin;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String cdArticolo;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdVoceDoganale;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String cdMisura;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal flPesoVariabile;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal nrPrezzo;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfValuta;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String stContabile;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String nrLotto;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal qtPrevista;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal nrNetto;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal nrLordo;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal nrColli;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal nrPzConf;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String nrListaIngresso;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "ACQ")
     protected String tpListaIngresso;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String nrRigaListaIngresso;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdProprietarioStock;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "OWN")
     protected String tpProprietarioStock;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtScadenza;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdPaeseOrigine;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdPaeseProvenienza;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfDvce;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtDvce;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfAnimo;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfSif;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal flDogana;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal flContainer;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfFattura;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtFattura;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfMrn;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String cdClienteRiserva;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "CUS")
     protected String tpClienteRiserva;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfRiserva;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal stato;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal compilatoDa;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataCompilazione;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String palletID;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal moq;
 
     /**
-     * Recupera il valore della proprietà id.
+     * Recupera il valore della proprietï¿½ id.
      * 
      * @return
      *     possible object is
@@ -207,7 +236,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà id.
+     * Imposta il valore della proprietï¿½ id.
      * 
      * @param value
      *     allowed object is
@@ -219,7 +248,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà idLot.
+     * Recupera il valore della proprietï¿½ idLot.
      * 
      * @return
      *     possible object is
@@ -231,7 +260,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà idLot.
+     * Imposta il valore della proprietï¿½ idLot.
      * 
      * @param value
      *     allowed object is
@@ -243,7 +272,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpRecord.
+     * Recupera il valore della proprietï¿½ tpRecord.
      * 
      * @return
      *     possible object is
@@ -255,7 +284,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpRecord.
+     * Imposta il valore della proprietï¿½ tpRecord.
      * 
      * @param value
      *     allowed object is
@@ -267,7 +296,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdDepositante.
+     * Recupera il valore della proprietï¿½ cdDepositante.
      * 
      * @return
      *     possible object is
@@ -279,7 +308,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdDepositante.
+     * Imposta il valore della proprietï¿½ cdDepositante.
      * 
      * @param value
      *     allowed object is
@@ -291,7 +320,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdCollo.
+     * Recupera il valore della proprietï¿½ cdCollo.
      * 
      * @return
      *     possible object is
@@ -303,7 +332,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdCollo.
+     * Imposta il valore della proprietï¿½ cdCollo.
      * 
      * @param value
      *     allowed object is
@@ -315,7 +344,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrRiga.
+     * Recupera il valore della proprietï¿½ nrRiga.
      * 
      * @return
      *     possible object is
@@ -327,7 +356,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrRiga.
+     * Imposta il valore della proprietï¿½ nrRiga.
      * 
      * @param value
      *     allowed object is
@@ -339,7 +368,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdGtin.
+     * Recupera il valore della proprietï¿½ cdGtin.
      * 
      * @return
      *     possible object is
@@ -351,7 +380,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdGtin.
+     * Imposta il valore della proprietï¿½ cdGtin.
      * 
      * @param value
      *     allowed object is
@@ -363,7 +392,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdArticolo.
+     * Recupera il valore della proprietï¿½ cdArticolo.
      * 
      * @return
      *     possible object is
@@ -375,7 +404,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdArticolo.
+     * Imposta il valore della proprietï¿½ cdArticolo.
      * 
      * @param value
      *     allowed object is
@@ -387,7 +416,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdVoceDoganale.
+     * Recupera il valore della proprietï¿½ cdVoceDoganale.
      * 
      * @return
      *     possible object is
@@ -399,7 +428,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdVoceDoganale.
+     * Imposta il valore della proprietï¿½ cdVoceDoganale.
      * 
      * @param value
      *     allowed object is
@@ -411,7 +440,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdMisura.
+     * Recupera il valore della proprietï¿½ cdMisura.
      * 
      * @return
      *     possible object is
@@ -423,7 +452,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdMisura.
+     * Imposta il valore della proprietï¿½ cdMisura.
      * 
      * @param value
      *     allowed object is
@@ -435,7 +464,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà flPesoVariabile.
+     * Recupera il valore della proprietï¿½ flPesoVariabile.
      * 
      * @return
      *     possible object is
@@ -447,7 +476,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà flPesoVariabile.
+     * Imposta il valore della proprietï¿½ flPesoVariabile.
      * 
      * @param value
      *     allowed object is
@@ -459,7 +488,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrPrezzo.
+     * Recupera il valore della proprietï¿½ nrPrezzo.
      * 
      * @return
      *     possible object is
@@ -471,7 +500,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrPrezzo.
+     * Imposta il valore della proprietï¿½ nrPrezzo.
      * 
      * @param value
      *     allowed object is
@@ -483,7 +512,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfValuta.
+     * Recupera il valore della proprietï¿½ dfValuta.
      * 
      * @return
      *     possible object is
@@ -495,7 +524,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfValuta.
+     * Imposta il valore della proprietï¿½ dfValuta.
      * 
      * @param value
      *     allowed object is
@@ -507,7 +536,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà stContabile.
+     * Recupera il valore della proprietï¿½ stContabile.
      * 
      * @return
      *     possible object is
@@ -519,7 +548,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà stContabile.
+     * Imposta il valore della proprietï¿½ stContabile.
      * 
      * @param value
      *     allowed object is
@@ -531,7 +560,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrLotto.
+     * Recupera il valore della proprietï¿½ nrLotto.
      * 
      * @return
      *     possible object is
@@ -543,7 +572,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrLotto.
+     * Imposta il valore della proprietï¿½ nrLotto.
      * 
      * @param value
      *     allowed object is
@@ -555,7 +584,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà qtPrevista.
+     * Recupera il valore della proprietï¿½ qtPrevista.
      * 
      * @return
      *     possible object is
@@ -567,7 +596,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà qtPrevista.
+     * Imposta il valore della proprietï¿½ qtPrevista.
      * 
      * @param value
      *     allowed object is
@@ -579,7 +608,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrNetto.
+     * Recupera il valore della proprietï¿½ nrNetto.
      * 
      * @return
      *     possible object is
@@ -591,7 +620,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrNetto.
+     * Imposta il valore della proprietï¿½ nrNetto.
      * 
      * @param value
      *     allowed object is
@@ -603,7 +632,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrLordo.
+     * Recupera il valore della proprietï¿½ nrLordo.
      * 
      * @return
      *     possible object is
@@ -615,7 +644,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrLordo.
+     * Imposta il valore della proprietï¿½ nrLordo.
      * 
      * @param value
      *     allowed object is
@@ -627,7 +656,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrColli.
+     * Recupera il valore della proprietï¿½ nrColli.
      * 
      * @return
      *     possible object is
@@ -639,7 +668,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrColli.
+     * Imposta il valore della proprietï¿½ nrColli.
      * 
      * @param value
      *     allowed object is
@@ -651,7 +680,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrPzConf.
+     * Recupera il valore della proprietï¿½ nrPzConf.
      * 
      * @return
      *     possible object is
@@ -663,7 +692,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrPzConf.
+     * Imposta il valore della proprietï¿½ nrPzConf.
      * 
      * @param value
      *     allowed object is
@@ -675,7 +704,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrListaIngresso.
+     * Recupera il valore della proprietï¿½ nrListaIngresso.
      * 
      * @return
      *     possible object is
@@ -687,7 +716,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrListaIngresso.
+     * Imposta il valore della proprietï¿½ nrListaIngresso.
      * 
      * @param value
      *     allowed object is
@@ -699,7 +728,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpListaIngresso.
+     * Recupera il valore della proprietï¿½ tpListaIngresso.
      * 
      * @return
      *     possible object is
@@ -711,7 +740,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpListaIngresso.
+     * Imposta il valore della proprietï¿½ tpListaIngresso.
      * 
      * @param value
      *     allowed object is
@@ -723,7 +752,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà nrRigaListaIngresso.
+     * Recupera il valore della proprietï¿½ nrRigaListaIngresso.
      * 
      * @return
      *     possible object is
@@ -735,7 +764,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà nrRigaListaIngresso.
+     * Imposta il valore della proprietï¿½ nrRigaListaIngresso.
      * 
      * @param value
      *     allowed object is
@@ -747,7 +776,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdProprietarioStock.
+     * Recupera il valore della proprietï¿½ cdProprietarioStock.
      * 
      * @return
      *     possible object is
@@ -759,7 +788,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdProprietarioStock.
+     * Imposta il valore della proprietï¿½ cdProprietarioStock.
      * 
      * @param value
      *     allowed object is
@@ -771,7 +800,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpProprietarioStock.
+     * Recupera il valore della proprietï¿½ tpProprietarioStock.
      * 
      * @return
      *     possible object is
@@ -783,7 +812,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpProprietarioStock.
+     * Imposta il valore della proprietï¿½ tpProprietarioStock.
      * 
      * @param value
      *     allowed object is
@@ -795,7 +824,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dtScadenza.
+     * Recupera il valore della proprietï¿½ dtScadenza.
      * 
      * @return
      *     possible object is
@@ -807,7 +836,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dtScadenza.
+     * Imposta il valore della proprietï¿½ dtScadenza.
      * 
      * @param value
      *     allowed object is
@@ -819,7 +848,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdPaeseOrigine.
+     * Recupera il valore della proprietï¿½ cdPaeseOrigine.
      * 
      * @return
      *     possible object is
@@ -831,7 +860,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdPaeseOrigine.
+     * Imposta il valore della proprietï¿½ cdPaeseOrigine.
      * 
      * @param value
      *     allowed object is
@@ -843,7 +872,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdPaeseProvenienza.
+     * Recupera il valore della proprietï¿½ cdPaeseProvenienza.
      * 
      * @return
      *     possible object is
@@ -855,7 +884,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdPaeseProvenienza.
+     * Imposta il valore della proprietï¿½ cdPaeseProvenienza.
      * 
      * @param value
      *     allowed object is
@@ -867,7 +896,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfDvce.
+     * Recupera il valore della proprietï¿½ dfDvce.
      * 
      * @return
      *     possible object is
@@ -879,7 +908,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfDvce.
+     * Imposta il valore della proprietï¿½ dfDvce.
      * 
      * @param value
      *     allowed object is
@@ -891,7 +920,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dtDvce.
+     * Recupera il valore della proprietï¿½ dtDvce.
      * 
      * @return
      *     possible object is
@@ -903,7 +932,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dtDvce.
+     * Imposta il valore della proprietï¿½ dtDvce.
      * 
      * @param value
      *     allowed object is
@@ -915,7 +944,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfAnimo.
+     * Recupera il valore della proprietï¿½ dfAnimo.
      * 
      * @return
      *     possible object is
@@ -927,7 +956,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfAnimo.
+     * Imposta il valore della proprietï¿½ dfAnimo.
      * 
      * @param value
      *     allowed object is
@@ -939,7 +968,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfSif.
+     * Recupera il valore della proprietï¿½ dfSif.
      * 
      * @return
      *     possible object is
@@ -951,7 +980,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfSif.
+     * Imposta il valore della proprietï¿½ dfSif.
      * 
      * @param value
      *     allowed object is
@@ -963,7 +992,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà flDogana.
+     * Recupera il valore della proprietï¿½ flDogana.
      * 
      * @return
      *     possible object is
@@ -975,7 +1004,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà flDogana.
+     * Imposta il valore della proprietï¿½ flDogana.
      * 
      * @param value
      *     allowed object is
@@ -987,7 +1016,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà flContainer.
+     * Recupera il valore della proprietï¿½ flContainer.
      * 
      * @return
      *     possible object is
@@ -999,7 +1028,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà flContainer.
+     * Imposta il valore della proprietï¿½ flContainer.
      * 
      * @param value
      *     allowed object is
@@ -1011,7 +1040,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfFattura.
+     * Recupera il valore della proprietï¿½ dfFattura.
      * 
      * @return
      *     possible object is
@@ -1023,7 +1052,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfFattura.
+     * Imposta il valore della proprietï¿½ dfFattura.
      * 
      * @param value
      *     allowed object is
@@ -1035,7 +1064,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dtFattura.
+     * Recupera il valore della proprietï¿½ dtFattura.
      * 
      * @return
      *     possible object is
@@ -1047,7 +1076,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dtFattura.
+     * Imposta il valore della proprietï¿½ dtFattura.
      * 
      * @param value
      *     allowed object is
@@ -1059,7 +1088,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfMrn.
+     * Recupera il valore della proprietï¿½ dfMrn.
      * 
      * @return
      *     possible object is
@@ -1071,7 +1100,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfMrn.
+     * Imposta il valore della proprietï¿½ dfMrn.
      * 
      * @param value
      *     allowed object is
@@ -1083,7 +1112,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà cdClienteRiserva.
+     * Recupera il valore della proprietï¿½ cdClienteRiserva.
      * 
      * @return
      *     possible object is
@@ -1095,7 +1124,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà cdClienteRiserva.
+     * Imposta il valore della proprietï¿½ cdClienteRiserva.
      * 
      * @param value
      *     allowed object is
@@ -1107,7 +1136,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà tpClienteRiserva.
+     * Recupera il valore della proprietï¿½ tpClienteRiserva.
      * 
      * @return
      *     possible object is
@@ -1119,7 +1148,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà tpClienteRiserva.
+     * Imposta il valore della proprietï¿½ tpClienteRiserva.
      * 
      * @param value
      *     allowed object is
@@ -1131,7 +1160,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dfRiserva.
+     * Recupera il valore della proprietï¿½ dfRiserva.
      * 
      * @return
      *     possible object is
@@ -1143,7 +1172,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dfRiserva.
+     * Imposta il valore della proprietï¿½ dfRiserva.
      * 
      * @param value
      *     allowed object is
@@ -1155,7 +1184,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà stato.
+     * Recupera il valore della proprietï¿½ stato.
      * 
      * @return
      *     possible object is
@@ -1167,7 +1196,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà stato.
+     * Imposta il valore della proprietï¿½ stato.
      * 
      * @param value
      *     allowed object is
@@ -1179,7 +1208,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà compilatoDa.
+     * Recupera il valore della proprietï¿½ compilatoDa.
      * 
      * @return
      *     possible object is
@@ -1191,7 +1220,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà compilatoDa.
+     * Imposta il valore della proprietï¿½ compilatoDa.
      * 
      * @param value
      *     allowed object is
@@ -1203,7 +1232,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà dataCompilazione.
+     * Recupera il valore della proprietï¿½ dataCompilazione.
      * 
      * @return
      *     possible object is
@@ -1215,7 +1244,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà dataCompilazione.
+     * Imposta il valore della proprietï¿½ dataCompilazione.
      * 
      * @param value
      *     allowed object is
@@ -1227,7 +1256,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà palletID.
+     * Recupera il valore della proprietï¿½ palletID.
      * 
      * @return
      *     possible object is
@@ -1239,7 +1268,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà palletID.
+     * Imposta il valore della proprietï¿½ palletID.
      * 
      * @param value
      *     allowed object is
@@ -1251,7 +1280,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Recupera il valore della proprietà moq.
+     * Recupera il valore della proprietï¿½ moq.
      * 
      * @return
      *     possible object is
@@ -1263,7 +1292,7 @@ public class PLotLineXml {
     }
 
     /**
-     * Imposta il valore della proprietà moq.
+     * Imposta il valore della proprietï¿½ moq.
      * 
      * @param value
      *     allowed object is

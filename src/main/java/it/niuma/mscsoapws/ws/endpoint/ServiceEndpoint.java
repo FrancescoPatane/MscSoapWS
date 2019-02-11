@@ -1,7 +1,11 @@
 package it.niuma.mscsoapws.ws.endpoint;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import it.niuma.mscsoapws.service.UserService;
 import it.niuma.mscsoapws.ws.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -29,6 +33,9 @@ public class ServiceEndpoint {
 	
 	@Autowired
 	PLotService pLotService;
+
+	@Autowired
+	UserService userService;
 	
 	@PayloadRoot(namespace = NAMESPACE, localPart = "getPOrderRequest")
 	@ResponsePayload
@@ -67,22 +74,51 @@ public class ServiceEndpoint {
 	@ResponsePayload
 	public CreateNewPLotResponse createNewPLotRequest(@RequestPayload CreateNewPLotRequest request) {
 		CreateNewPLotResponse response = new CreateNewPLotResponse();
-		POrderXml isItPresent = null;
-		try {
-			isItPresent = service.getPOrderFromOrderNumber(request.getNumeroOrdine());
-		} catch(Exception ex) {
-			ex.printStackTrace();
-			return response;
+		String accessToken = request.getAccessToken();
+		if (userService.hasTokenExpired(accessToken)) {
+			BigDecimal vendorID = userService.getVendorIDFromAccessToken(accessToken);
+			BigDecimal userID = userService.getUserIdByVendorID(vendorID);
+			//I can assume that the orderNumber is unique and that it already exists
+			Map<String, Object> newLine  = pLotService.executePlotCreationLogic(
+					request.getNumeroOrdine(),
+					request.getNumeroDDT(),
+					request.getDtEmissione(),
+					request.getDtIngresso(),
+					request.getPesoVariabile(),
+					request.getNrLotto(),
+					request.getNrNetto(),
+					request.getNrLordo(),
+					request.getQuantitaConfermata(),
+					request.getNrColli(),
+					request.getNrPezziConf(),
+					request.getDtScadenza(),
+					request.getDocDoganale(),
+					request.getNDocDoganale(),
+					userID,
+					request.getCodiceSSCCPallett(),
+					request.getGlobalTradeItemNumber(),
+					request.getNrRiga(),
+					request.getCodiceArticolo(),
+					request.getUnitaMisura(),
+					request.getPaeseOrigine(),
+					request.getPaeseProvenienza(),
+					request.getDocSanitario(),
+					request.getDataDocSanitario(),
+					request.getDfFattura(),
+					request.getDtFattura(),
+					request.getCodiceAnimo(),
+					request.getSif(),
+					request.getVoceDoganale(),
+					request.getIdPallet()
+			);
+			PLotXml plot = (PLotXml) newLine.get("PLot");
+			PLotLineXml pLotLineXml = (PLotLineXml) newLine.get("PLotLine");
+			response.setPLot(plot);
+			response.setPLotLine(pLotLineXml);
 		}
-		//I can assume that the orderNumber is unique
-		PLotXml something  = isItPresent != null ? pLotService.deleteAndCreateNewPLot(request.getNumeroOrdine(), 
-				request.getNumeroDDT(),request.getDtEmissione(),request.getDtIngresso()) :
-					pLotService.createNewPlot(request.getNumeroOrdine(), 
-				request.getNumeroDDT(),request.getDtEmissione(),request.getDtIngresso());
-
 		return response;
 	}
-	
+
 	
 
 

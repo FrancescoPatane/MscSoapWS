@@ -24,7 +24,7 @@ public class BusinessService {
 	@Autowired
 	private MappingUtility mappingUtility;
 	
-	public POrderXml getPOrderFromOrderNumber(String orderNumber) throws Exception {
+	public POrderXml getPOrderFromOrderNumber(String orderNumber)  {
 		
 		POrderXml found = pOrderRepository.findByPoNumber(orderNumber);
 		return found;

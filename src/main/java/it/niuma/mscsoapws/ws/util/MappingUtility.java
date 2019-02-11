@@ -18,7 +18,7 @@ import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
 @Component
-public class MappingUtility {
+public class MappingUtility<T> {
 
 	public static  List<String> getColumnsNames(Sql2o sql2o, String tableName) {
 		String queryText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='dbo' AND TABLE_NAME='" + tableName+"'";
@@ -31,6 +31,8 @@ public class MappingUtility {
 		}
 		return toReturn;
 	}
+
+
 
 	public static HashMap<String,String> getMappingForDb(Class classe, List<String> columnNames) {
 		HashMap<String,String> toReturn  = new HashMap<>();

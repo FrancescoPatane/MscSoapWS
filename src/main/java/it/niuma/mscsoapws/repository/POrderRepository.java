@@ -4,7 +4,7 @@ import it.niuma.mscsoapws.ws.POrderXml;
 
 public interface POrderRepository {
 	
-	public POrderXml findByPoNumber(String poNumber) throws Exception;
+	public POrderXml findByPoNumber(String poNumber) ;
 	
 
 }

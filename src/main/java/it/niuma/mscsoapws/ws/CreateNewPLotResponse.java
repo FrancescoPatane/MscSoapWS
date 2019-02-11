@@ -1,12 +1,6 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 05:46:57 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
+
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -26,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="PLot" type="{it.niuma.mscsoapws.ws}PLotXml"/>
+ *         &lt;element name="PLotLine" type="{it.niuma.mscsoapws.ws}PLotLineXml"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,16 +31,19 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "pLot"
+    "pLot",
+    "pLotLine"
 })
-@XmlRootElement(name = "createNewPLotResponse")
+@XmlRootElement(name = "createNewPLotResponse", namespace = "it.niuma.mscsoapws.ws")
 public class CreateNewPLotResponse {
 
-    @XmlElement(name = "PLot", required = true)
+    @XmlElement(name = "PLot", namespace = "it.niuma.mscsoapws.ws", required = true)
     protected PLotXml pLot;
+    @XmlElement(name = "PLotLine", namespace = "it.niuma.mscsoapws.ws", required = true)
+    protected PLotLineXml pLotLine;
 
     /**
-     * Recupera il valore della proprietà pLot.
+     * Recupera il valore della proprietï¿½ pLot.
      * 
      * @return
      *     possible object is
@@ -57,7 +55,7 @@ public class CreateNewPLotResponse {
     }
 
     /**
-     * Imposta il valore della proprietà pLot.
+     * Imposta il valore della proprietï¿½ pLot.
      * 
      * @param value
      *     allowed object is
@@ -66,6 +64,30 @@ public class CreateNewPLotResponse {
      */
     public void setPLot(PLotXml value) {
         this.pLot = value;
+    }
+
+    /**
+     * Recupera il valore della proprietï¿½ pLotLine.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PLotLineXml }
+     *     
+     */
+    public PLotLineXml getPLotLine() {
+        return pLotLine;
+    }
+
+    /**
+     * Imposta il valore della proprietï¿½ pLotLine.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PLotLineXml }
+     *     
+     */
+    public void setPLotLine(PLotLineXml value) {
+        this.pLotLine = value;
     }
 
 }

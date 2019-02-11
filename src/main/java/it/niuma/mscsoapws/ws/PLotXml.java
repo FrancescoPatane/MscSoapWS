@@ -1,10 +1,3 @@
-//
-// Questo file � stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andr� persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.06 alle 05:46:57 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -51,7 +44,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PLotXml", propOrder = {
+@XmlType(name = "PLotXml", namespace = "it.niuma.mscsoapws.ws", propOrder = {
     "id",
     "tpRecord",
     "cdDepositante",
@@ -69,34 +62,39 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class PLotXml {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected BigDecimal id;
-    @XmlElement(defaultValue = "TD")
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "TD")
     protected String tpRecord;
-    @XmlElement(defaultValue = "MSC")
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "MSC")
     protected String cdDepositante;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtEmissione;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String dfDocIngresso;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtIngresso;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String cdCedente;
-    @XmlElement(defaultValue = "SUP")
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "SUP")
     protected String tpCedente;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal stato;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal inviatoDa;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
+    @XmlJavaTypeAdapter(Adapter1.class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataInvio;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String email;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String poNumber;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal ssccAvailable;
 
     /**
