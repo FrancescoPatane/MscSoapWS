@@ -177,7 +177,7 @@ public class POrderXml {
     @XmlSchemaType(name = "dateTime")
     protected Date deliveryDate;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date createDate;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
@@ -217,7 +217,7 @@ public class POrderXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String coVendorName;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date coDate;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
@@ -243,7 +243,7 @@ public class POrderXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected int statusID;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date coDateSupplier;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
@@ -251,7 +251,7 @@ public class POrderXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal inviatoDa;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataInvio;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
@@ -267,7 +267,7 @@ public class POrderXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal logistic;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date limitToSend;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import it.niuma.mscsoapws.ws.POrderLineXml;
-import it.niuma.mscsoapws.ws.POrderXml;
 import it.niuma.mscsoapws.ws.util.MappingUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
-
-import it.niuma.mscsoapws.model.POrderLine;
 
 
 @Repository

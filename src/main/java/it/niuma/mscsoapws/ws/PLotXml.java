@@ -75,7 +75,7 @@ public class PLotXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String dfDocIngresso;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtIngresso;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
@@ -87,7 +87,7 @@ public class PLotXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal inviatoDa;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataInvio;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")

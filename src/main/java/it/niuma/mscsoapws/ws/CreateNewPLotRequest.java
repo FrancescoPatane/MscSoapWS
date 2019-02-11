@@ -103,11 +103,11 @@ public class CreateNewPLotRequest {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String numeroDDT;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtEmissione;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtIngresso;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "0")
@@ -127,7 +127,7 @@ public class CreateNewPLotRequest {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected BigDecimal nrPezziConf;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtScadenza;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
@@ -149,13 +149,13 @@ public class CreateNewPLotRequest {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "")
     protected String docSanitario;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataDocSanitario;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "")
     protected String dfFattura;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtFattura;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "")

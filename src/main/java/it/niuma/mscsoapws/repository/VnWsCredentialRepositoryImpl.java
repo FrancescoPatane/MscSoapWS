@@ -35,5 +35,25 @@ public class VnWsCredentialRepositoryImpl implements VnWsCredentialRepository{
 			throw e;
 		}
 	}
+	
+	@Override
+	public VnWsCredential findByUsername(String username) {
+		try (Connection con = sql2o.open()) {
+			String query = "SELECT VENDOR_ID vendorId, USERNAME, PASSWORD, ISSUE_DATE issueDate FROM VN_WS_CREDENTIALS WHERE USERNAME = :username";
+			List<VnWsCredential> results = con.createQuery(query).addParameter("username", username).executeAndFetch(VnWsCredential.class);
+			
+			if (results != null && results.size()>0) {
+				return results.get(0);
+			}else {
+				return null;
+			}
+			
+			
+		} catch (Exception e) {
+			logger.error("Error executing findByUsername"); 
+			e.printStackTrace();
+			throw e;
+		}
+	}
 
 }

@@ -1,7 +1,6 @@
 
 package it.niuma.mscsoapws.ws;
 
-
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -136,7 +135,7 @@ public class POrderLineXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal itemDiscount;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date itemExpiry;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")

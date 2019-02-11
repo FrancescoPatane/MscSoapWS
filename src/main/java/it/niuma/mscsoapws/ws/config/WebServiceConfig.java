@@ -15,6 +15,7 @@ import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.server.SmartEndpointInterceptor;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
+import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 //import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 //import org.springframework.ws.soap.security.wss4j2.callback.SimplePasswordValidationCallbackHandler;
 //import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
@@ -22,6 +23,7 @@ import org.springframework.ws.soap.server.endpoint.interceptor.PayloadRootSmartS
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
+import it.niuma.mscsoapws.ws.callbackhandler.AuthorizationCallBackHandler;
 import it.niuma.mscsoapws.ws.endpoint.ServiceEndpoint;
 import it.niuma.mscsoapws.ws.interceptor.CustomEndpointInterceptor;
 
@@ -53,22 +55,41 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	public XsdSchema schema() {
 		return new SimpleXsdSchema(new ClassPathResource("/schema/schema.xsd"));
 	}
-
-
+	
 	@Bean
-	public EndpointInterceptor endPointInterceptor() {
-		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
-		return interceptor;
+	public AuthorizationCallBackHandler authorizationCallBackHandler(){
+		AuthorizationCallBackHandler callbackHandler = new AuthorizationCallBackHandler();
+		return callbackHandler;
 	}
-
-
+	
 	@Bean
-	public SmartEndpointInterceptor addSmartEndpointInterceptor(){
+	public Wss4jSecurityInterceptor securityInterceptor(){
+		Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
+		securityInterceptor.setValidationActions("UsernameToken");
+		securityInterceptor.setValidationCallbackHandler(authorizationCallBackHandler());
+		return securityInterceptor;
+	}
+	
+	    @Override
+	    public void addInterceptors(List interceptors) {
+	        interceptors.add(securityInterceptor());
+	    }
 
-		PayloadRootSmartSoapEndpointInterceptor smartInterceptor = 
-				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), ServiceEndpoint.NAMESPACE, "getPOrderRequest");
 
-		return smartInterceptor;
-	}    
+//	@Bean
+//	public EndpointInterceptor endPointInterceptor() {
+//		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
+//		return interceptor;
+//	}
+//
+//
+//	@Bean
+//	public SmartEndpointInterceptor addSmartEndpointInterceptor(){
+//
+//		PayloadRootSmartSoapEndpointInterceptor smartInterceptor = 
+//				new PayloadRootSmartSoapEndpointInterceptor(endPointInterceptor(), ServiceEndpoint.NAMESPACE, "getPOrderRequest");
+//
+//		return smartInterceptor;
+//	}    
 
 }

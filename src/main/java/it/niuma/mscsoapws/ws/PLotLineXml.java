@@ -175,7 +175,7 @@ public class PLotLineXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", defaultValue = "OWN")
     protected String tpProprietarioStock;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtScadenza;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
@@ -185,7 +185,7 @@ public class PLotLineXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected String dfDvce;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dtDvce;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
@@ -215,7 +215,7 @@ public class PLotLineXml {
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
     protected BigDecimal compilatoDa;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws", type = String.class)
-    @XmlJavaTypeAdapter(Adapter1.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Date dataCompilazione;
     @XmlElement(namespace = "it.niuma.mscsoapws.ws")
