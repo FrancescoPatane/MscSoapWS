@@ -29,7 +29,7 @@ public class AuthUtility {
 	private WsAccessTokenRepository tokenRepository;
 	
 	
-	public String obtaindMD5Value(String toConvert){
+	public static String obtaindMD5Value(String toConvert){
 
 		String md5val = "";
 

@@ -1,7 +1,7 @@
 package it.niuma.mscsoapws.ws.interceptor;
 
 import java.io.*;
-import java.util.Iterator;
+import java.util.*;
 
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
@@ -33,10 +33,7 @@ import org.springframework.ws.soap.SoapBody;
 import org.springframework.ws.soap.SoapHeader;
 import org.springframework.ws.soap.SoapMessage;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.InputSource;
 
 import it.niuma.mscsoapws.repository.VnWsCredentialRepository;
@@ -53,32 +50,37 @@ public class CustomEndpointInterceptor implements EndpointInterceptor {
 
 		
 		System.out.println("### SOAP REQUEST ###");
-        try {
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            WebServiceMessage message = messageContext.getRequest();
-
-            Source s = messageContext.getRequest().getPayloadSource();
-            messageContext.getRequest().writeTo(buffer);
-            String payload = buffer.toString(java.nio.charset.StandardCharsets.UTF_8.name());
-            System.out.println(payload);
-			InputStream is = new ByteArrayInputStream(payload.getBytes());
+		InputStream is = null;
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		Document doc = null;
 			//-------
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(new java.io.ByteArrayInputStream(payload.getBytes()));
-			XPath xpath = XPathFactory.newInstance().newXPath();
-			xpath.setNamespaceContext(new NamespaceContext() {
-				@Override
-				public String getNamespaceURI(String prefix) {
-					if("soapenv".equals(prefix)){
-						return "http://schemas.xmlsoap.org/soap/envelope/";
-					}else{
-						return null;
-					}
-				}
 
-				@Override
-				public String getPrefix(String namespaceURI) {
+		try {
+			ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+			messageContext.getRequest().writeTo(buffer);
+			String payload = buffer.toString(java.nio.charset.StandardCharsets.UTF_8.name());
+			is = new ByteArrayInputStream(payload.getBytes());
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			doc = builder.parse(is);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+
+		XPath xpath = XPathFactory.newInstance().newXPath();
+		xpath.setNamespaceContext(new NamespaceContext() {
+			@Override
+			public String getNamespaceURI(String prefix) {
+				if("soapenv".equals(prefix)){
+					return "http://schemas.xmlsoap.org/soap/envelope/";
+				}else{
+					return null;
+				}
+			}
+
+			@Override
+			public String getPrefix(String namespaceURI) {
 					return null;
 				}
 
@@ -87,62 +89,19 @@ public class CustomEndpointInterceptor implements EndpointInterceptor {
 					return null;
 				}
 			});
-			XPathExpression expr = xpath.compile("//*//soapenv:Header");
-			Object result = expr.evaluate(doc, XPathConstants.NODESET);
-			NodeList nodes = (NodeList) result;
-			for (int i = 0; i < nodes.getLength(); i++) {
-				Node currentItem = nodes.item(i);
-				System.out.println("found node -> " + currentItem.getLocalName() + " (namespace: " + currentItem.getNamespaceURI() + ")");
-			}
+		XPathExpression expr = xpath.compile("//soapenv:Envelope//soapenv:Header//text()[normalize-space()]");
+		Object result = expr.evaluate(doc, XPathConstants.NODESET);
+		NodeList nodes = (NodeList) result;
+		Map<String, String> mappedValuesFromHeader = new HashMap<>();
+		for (int i = 0; i < nodes.getLength(); i++) {
+			Node currentItem = nodes.item(i);
+			String key = currentItem.getParentNode().getNodeName().split("wsse:")[1].toLowerCase();
+			mappedValuesFromHeader.put(key, currentItem.getNodeValue());
+		}
 
-/*			SOAPMessage request = MessageFactory.newInstance().createMessage(null, is);
+		//String hashedPass = AuthUtility.obtaindMD5Value(mappedValuesFromHeader.get("password"));
 
-			SOAPHeader theHeader = request.getSOAPHeader();
 
-		    String attributo = 	theHeader.getAttribute("wsu:Id");
-			Node nodo = theHeader.getFirstChild();
-			Node node = theHeader.getFirstChild().getFirstChild();
-*/
-/*            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            InputSource src = new InputSource();
-            src.setCharacterStream(new StringReader(payload));
-
-            Document doc = builder.parse(src);
-            String password = doc.getElementsByTagName("wsse:Password").item(0).getTextContent();
-//            String name = doc.getElementsByTagName("name").item(0).getTextContent();
-            System.out.println(password);
-*/
-            
-        } catch (IOException e) {
-//            throw new WebServiceClientException("Can not write the SOAP request into the out stream", e) {
-//                private static final long serialVersionUID = -7118480620416458069L;
-            };
-
-		
-		
-//		SaajSoapMessage saajSoapMessage = (SaajSoapMessage) messageContext.getRequest();
-//		SOAPMessage soapMessage = saajSoapMessage.getSaajMessage();
-//		SOAPBody soapBody = soapMessage.getSOAPBody();		
-//		soapenv:Bod
-//		Iterator it =soapBody.getAllAttributes();
-//		
-//		while (it.hasNext()) {
-//			System.out.println(it.next());
-//		}
-		
-//		WebServiceMessage webServiceMessageRequest = messageContext.getRequest();
-//		SoapMessage soapMessage = (SoapMessage) webServiceMessageRequest;
-//		SoapHeader soapHeader = soapMessage.getSoapHeader();
-		
-//		Source bodySource = soapHeader.getSource();
-//		DOMSource bodyDomSource = (DOMSource) bodySource;
-//		Node bodyNode = bodyDomSource.getNode();	
-		
-//		Document envelopeAsDocument = soapMessage.getDocument();
-//        Element elem = WSSecurityUtil.getSecurityHeader(envelopeAsDocument, "");
-//        WSSecurityEngine secegine = new WSSecurityEngine();
-//        WSHandlerResult result = secegine.processSecurityHeader(elem, validationData);
-		
 		return true;
 	}
 
