@@ -1,20 +1,27 @@
 package it.niuma.mscsoapws.ws.interceptor;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.util.Iterator;
 
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPHeader;
 import javax.xml.soap.SOAPMessage;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
 
+import com.sun.org.apache.xerces.internal.dom.DeferredElementImpl;
 import org.apache.wss4j.dom.engine.WSSecurityEngine;
 import org.apache.wss4j.dom.handler.WSHandlerResult;
 import org.apache.wss4j.dom.util.WSSecurityUtil;
@@ -29,6 +36,7 @@ import org.springframework.ws.soap.saaj.SaajSoapMessage;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 import it.niuma.mscsoapws.repository.VnWsCredentialRepository;
@@ -47,13 +55,55 @@ public class CustomEndpointInterceptor implements EndpointInterceptor {
 		System.out.println("### SOAP REQUEST ###");
         try {
             ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+            WebServiceMessage message = messageContext.getRequest();
+
             Source s = messageContext.getRequest().getPayloadSource();
             messageContext.getRequest().writeTo(buffer);
             String payload = buffer.toString(java.nio.charset.StandardCharsets.UTF_8.name());
             System.out.println(payload);
-            
-            
-            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			InputStream is = new ByteArrayInputStream(payload.getBytes());
+			//-------
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(new java.io.ByteArrayInputStream(payload.getBytes()));
+			XPath xpath = XPathFactory.newInstance().newXPath();
+			xpath.setNamespaceContext(new NamespaceContext() {
+				@Override
+				public String getNamespaceURI(String prefix) {
+					if("soapenv".equals(prefix)){
+						return "http://schemas.xmlsoap.org/soap/envelope/";
+					}else{
+						return null;
+					}
+				}
+
+				@Override
+				public String getPrefix(String namespaceURI) {
+					return null;
+				}
+
+				@Override
+				public Iterator getPrefixes(String namespaceURI) {
+					return null;
+				}
+			});
+			XPathExpression expr = xpath.compile("//*//soapenv:Header");
+			Object result = expr.evaluate(doc, XPathConstants.NODESET);
+			NodeList nodes = (NodeList) result;
+			for (int i = 0; i < nodes.getLength(); i++) {
+				Node currentItem = nodes.item(i);
+				System.out.println("found node -> " + currentItem.getLocalName() + " (namespace: " + currentItem.getNamespaceURI() + ")");
+			}
+
+/*			SOAPMessage request = MessageFactory.newInstance().createMessage(null, is);
+
+			SOAPHeader theHeader = request.getSOAPHeader();
+
+		    String attributo = 	theHeader.getAttribute("wsu:Id");
+			Node nodo = theHeader.getFirstChild();
+			Node node = theHeader.getFirstChild().getFirstChild();
+*/
+/*            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             InputSource src = new InputSource();
             src.setCharacterStream(new StringReader(payload));
 
@@ -61,7 +111,7 @@ public class CustomEndpointInterceptor implements EndpointInterceptor {
             String password = doc.getElementsByTagName("wsse:Password").item(0).getTextContent();
 //            String name = doc.getElementsByTagName("name").item(0).getTextContent();
             System.out.println(password);
-
+*/
             
         } catch (IOException e) {
 //            throw new WebServiceClientException("Can not write the SOAP request into the out stream", e) {

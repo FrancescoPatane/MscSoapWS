@@ -1,6 +1,7 @@
 package it.niuma.mscsoapws.ws.endpoint;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,43 +91,52 @@ public class ServiceEndpoint {
 		if (userService.hasTokenExpired(accessToken)) {
 			BigDecimal vendorID = userService.getVendorIDFromAccessToken(accessToken);
 			BigDecimal userID = userService.getUserIdByVendorID(vendorID);
-			//I can assume that the orderNumber is unique and that it already exists
-			Map<String, Object> newLine  = pLotService.executePlotCreationLogic(
-					request.getNumeroOrdine(),
-					request.getNumeroDDT(),
-					request.getDtEmissione(),
-					request.getDtIngresso(),
-					request.getPesoVariabile(),
-					request.getNrLotto(),
-					request.getNrNetto(),
-					request.getNrLordo(),
-					request.getQuantitaConfermata(),
-					request.getNrColli(),
-					request.getNrPezziConf(),
-					request.getDtScadenza(),
-					request.getDocDoganale(),
-					request.getNDocDoganale(),
-					userID,
-					request.getCodiceSSCCPallett(),
-					request.getGlobalTradeItemNumber(),
-					request.getNrRiga(),
-					request.getCodiceArticolo(),
-					request.getUnitaMisura(),
-					request.getPaeseOrigine(),
-					request.getPaeseProvenienza(),
-					request.getDocSanitario(),
-					request.getDataDocSanitario(),
-					request.getDfFattura(),
-					request.getDtFattura(),
-					request.getCodiceAnimo(),
-					request.getSif(),
-					request.getVoceDoganale(),
-					request.getIdPallet()
-			);
-			PLotXml plot = (PLotXml) newLine.get("PLot");
-			PLotLineXml pLotLineXml = (PLotLineXml) newLine.get("PLotLine");
-			response.setPLot(plot);
-			response.setPLotLine(pLotLineXml);
+			PLotDataFromInput plotFromInput = request.getPlotToCreate();
+			Map<String, Object> newLine = null;
+			List<PLotLineXml> toReturnPLotLines = new ArrayList<>();
+			PLotXml toReturnPLot = null;
+			for (PLotLineDataFromInput riga : request.getPlotLineToCreate()) {
+				//I can assume that the orderNumber is unique and that it already exists
+				 newLine  = pLotService.executePlotCreationLogic(
+						 plotFromInput.getNumeroOrdine(),
+						 plotFromInput.getNumeroDDT(),
+						 plotFromInput.getDtEmissione(),
+						 plotFromInput.getDtIngresso(),
+						 riga.getPesoVariabile(),
+						 riga.getNrLotto(),
+						 riga.getNrNetto(),
+						 riga.getNrLordo(),
+						 riga.getQuantitaConfermata(),
+						 riga.getNrColli(),
+						 riga.getNrPezziConf(),
+						 riga.getDtScadenza(),
+						 riga.getDocDoganale(),
+						 riga.getNDocDoganale(),
+						userID,
+						 riga.getCodiceSSCCPallett(),
+						 riga.getGlobalTradeItemNumber(),
+						 riga.getNrRiga(),
+						 riga.getCodiceArticolo(),
+						 riga.getUnitaMisura(),
+						 riga.getPaeseOrigine(),
+						 riga.getPaeseProvenienza(),
+						 riga.getDocSanitario(),
+						 riga.getDataDocSanitario(),
+						 riga.getDfFattura(),
+						 riga.getDtFattura(),
+						 riga.getCodiceAnimo(),
+						 riga.getSif(),
+						 riga.getVoceDoganale(),
+						 riga.getIdPallet()
+				);
+				 if (toReturnPLot == null) {
+				 	toReturnPLot = (PLotXml) newLine.get("PLot");
+				 }
+				 toReturnPLotLines.add((PLotLineXml) newLine.get("PLotLine"));
+			}
+
+			response.setPLot(toReturnPLot);
+			response.getPLotLine().addAll(toReturnPLotLines);
 		}
 		return response;
 	}

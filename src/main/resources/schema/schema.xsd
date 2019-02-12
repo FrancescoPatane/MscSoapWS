@@ -90,37 +90,9 @@
     <xs:element name="createNewPLotRequest">
         <xs:complexType>
             <xs:sequence>
-
 				<xs:element name="accessToken" type="xs:string"/>
-                <xs:element name="numeroOrdine" type="xs:string"/>
-                <xs:element name="numeroDDT" type="xs:string"/>
-                <xs:element name="dtEmissione" type="xs:dateTime"/>
-                <xs:element name="dtIngresso" type="xs:dateTime"/>
-				<xs:element name="pesoVariabile" type="xs:decimal" minOccurs="0" default="0"/>
-				<xs:element name="nrLotto" type="xs:decimal" />
-				<xs:element name="quantitaConfermata" type="xs:decimal"/>
-				<xs:element name="globalTradeItemNumber" type="xs:string"/>
-				<xs:element name="nrNetto" type="xs:decimal"/>
-				<xs:element name="nrLordo" type="xs:decimal"/>
-				<xs:element name="nrColli" type="xs:decimal"/>
-				<xs:element name="nrPezziConf" type="xs:decimal"/>
-				<xs:element name="dtScadenza" type="xs:dateTime"/>
-				<xs:element name="docDoganale" type="xs:decimal"/>
-				<xs:element name="nDocDoganale" type="xs:decimal" minOccurs="0"/>
-				<xs:element name="codiceSSCCPallett" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="nrRiga" type="xs:decimal"/>
-				<xs:element name="codiceArticolo" type="xs:string" />
-				<xs:element name="unitaMisura" type="xs:string"/>
-				<xs:element name="paeseOrigine" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="paeseProvenienza" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="docSanitario" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="dataDocSanitario" type="xs:dateTime" minOccurs="0"/>
-				<xs:element name="dfFattura" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="dtFattura" type="xs:dateTime" minOccurs="0"/>
-				<xs:element name="codiceAnimo" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="sif" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="voceDoganale" type="xs:string" minOccurs="0" default=""/>
-				<xs:element name="idPallet" type="xs:string" minOccurs="0" default=""/>
+				<xs:element name="plotToCreate" type="tns:pLotDataFromInput"/>
+				<xs:element name="plotLineToCreate" type="tns:pLotLineDataFromInput" maxOccurs="unbounded" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -129,7 +101,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="PLot" type="tns:PLotXml"/>
-				<xs:element name="PLotLine" type="tns:PLotLineXml"/>
+				<xs:element name="PLotLine" type="tns:PLotLineXml" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -158,7 +130,46 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-	
+
+	<xs:complexType name="pLotDataFromInput">
+		<xs:sequence>
+			<xs:element name="numeroOrdine" type="xs:string"/>
+			<xs:element name="numeroDDT" type="xs:string"/>
+			<xs:element name="dtEmissione" type="xs:dateTime"/>
+			<xs:element name="dtIngresso" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="pLotLineDataFromInput">
+		<xs:sequence>
+			<xs:element name="pesoVariabile" type="xs:decimal" minOccurs="0" default="0"/>
+			<xs:element name="nrLotto" type="xs:decimal" />
+			<xs:element name="quantitaConfermata" type="xs:decimal"/>
+			<xs:element name="globalTradeItemNumber" type="xs:string"/>
+			<xs:element name="nrNetto" type="xs:decimal"/>
+			<xs:element name="nrLordo" type="xs:decimal"/>
+			<xs:element name="nrColli" type="xs:decimal"/>
+			<xs:element name="nrPezziConf" type="xs:decimal"/>
+			<xs:element name="dtScadenza" type="xs:dateTime"/>
+			<xs:element name="docDoganale" type="xs:decimal"/>
+			<xs:element name="nDocDoganale" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="codiceSSCCPallett" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="nrRiga" type="xs:decimal"/>
+			<xs:element name="codiceArticolo" type="xs:string" />
+			<xs:element name="unitaMisura" type="xs:string"/>
+			<xs:element name="paeseOrigine" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="paeseProvenienza" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="docSanitario" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="dataDocSanitario" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="dfFattura" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="dtFattura" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="codiceAnimo" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="sif" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="voceDoganale" type="xs:string" minOccurs="0" default=""/>
+			<xs:element name="idPallet" type="xs:string" minOccurs="0" default=""/>
+		</xs:sequence>
+	</xs:complexType>
+
     <xs:complexType name="POrderLineXml">
         <xs:sequence>
             <xs:element name="id" type="xs:long"/>
