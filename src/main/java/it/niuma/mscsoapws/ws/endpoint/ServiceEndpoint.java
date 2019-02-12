@@ -50,6 +50,18 @@ public class ServiceEndpoint {
 		GetPOrderResponse response = new GetPOrderResponse();
 		POrderXml pOrder = pOrderService.getPOrderFromOrderNumber(request.getPoNumber());
 		response.setPOrder(pOrder);
+		response.setRequiresLogistic(pOrderService.doesOrderRequireLogistic(pOrder));
+		return response;
+	}
+
+	@PayloadRoot(namespace = NAMESPACE, localPart = "getPOrdersFromVendorCodeRequest")
+	@ResponsePayload
+	public GetPOrdersFromVendorCodeResponse getPOrderRequest(@RequestPayload GetPOrdersFromVendorCodeRequest request) throws PorderNotFoundException, ServerErrorException {
+		logger.info("Received webservice call for getPOrdersFromVendorCodeResponse");
+		GetPOrdersFromVendorCodeResponse response = new GetPOrdersFromVendorCodeResponse();
+		List<POrderXml> orders = pOrderService.findPOrdersByVendorCode(request.getVendorCode());
+		List<POrderXml> thoseWhoRequireLogistic = pOrderService.ordersByVendorCodeThatRequireLogistic(orders);
+		response.getOrders().addAll(thoseWhoRequireLogistic);
 		return response;
 	}
 	

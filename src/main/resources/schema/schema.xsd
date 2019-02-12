@@ -30,6 +30,21 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="getPOrdersFromVendorCodeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="vendorCode" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getPOrdersFromVendorCodeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orders" type="tns:POrderXml" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
 	<xs:element name="getPOrderRequest">
 		<xs:complexType>
@@ -43,6 +58,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="pOrder" type="tns:POrderXml" />
+				<xs:element name="requiresLogistic" type="xs:boolean"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
