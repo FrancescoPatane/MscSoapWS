@@ -34,16 +34,13 @@ public class ServiceEndpoint {
 	
 	@Autowired
 	private POrderService pOrderService;
-	
-	@Autowired
-	private AuthUtility authUtil;
-	
+
 	@Autowired
 	PLotService pLotService;
 
 	@Autowired
 	UserService userService;
-	
+
 	@PayloadRoot(namespace = NAMESPACE, localPart = "getPOrderRequest")
 	@ResponsePayload
 	public GetPOrderResponse getPOrderRequest(@RequestPayload GetPOrderRequest request) throws PorderNotFoundException, ServerErrorException {
@@ -65,22 +62,7 @@ public class ServiceEndpoint {
 		response.getOrders().addAll(thoseWhoRequireLogistic);
 		return response;
 	}
-	
-	@PayloadRoot(namespace = NAMESPACE, localPart = "loginRequest")
-	@ResponsePayload
-	public LoginResponse executeLoginRequest(@RequestPayload LoginRequest request) throws InvalidCredentialsException {
-		logger.info("Received webservice call for executeLoginRequest");
-		LoginResponse response = new LoginResponse();
-		String username = request.getUsername();
-		String password = request.getPassword();
-		List<VnWsCredential> storedCredentials = authUtil.getStoredCredentials(username, password);
-		if (storedCredentials.size()>0) {
-			response.setAccessToken(authUtil.generateToken(storedCredentials.get(0)));
-		}else {
-			throw new InvalidCredentialsException("Invalid credentials");
-		}
-		return response;
-	}
+
 
 	@PayloadRoot(namespace = NAMESPACE, localPart = "createNewPLotRequest")
 	@ResponsePayload

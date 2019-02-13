@@ -80,13 +80,13 @@ public class AuthUtility {
 		return vendorCredential;
 	}
 
-	public void checkTokenIsValid (String token) throws InvalidTokenException {
-		WsAccessToken storedToken = tokenRepository.findByToken(token);
-		if (storedToken == null) {
-			throw new InvalidTokenException("Token not valid.");
-		} else if (LocalDateTime.now().isAfter(storedToken.getExpirationDate())){
+	public boolean checkTokenIsValid (String token) throws InvalidTokenException {
+		LocalDateTime expirationDate = tokenRepository.getTokenExpirationDate(token);
+		if (expirationDate == null) {
 			throw new InvalidTokenException("Token not valid.");
 		}
+		System.out.println(expirationDate.isAfter(LocalDateTime.now()));
+		return expirationDate.isAfter(LocalDateTime.now());
 	}
 
 }

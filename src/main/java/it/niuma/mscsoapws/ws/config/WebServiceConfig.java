@@ -1,8 +1,6 @@
 package it.niuma.mscsoapws.ws.config;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -12,23 +10,17 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
-import org.springframework.ws.server.SmartEndpointInterceptor;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 //import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 //import org.springframework.ws.soap.security.wss4j2.callback.SimplePasswordValidationCallbackHandler;
 //import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
-import org.springframework.ws.soap.server.endpoint.interceptor.PayloadRootSmartSoapEndpointInterceptor;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
 import it.niuma.mscsoapws.ws.callbackhandler.AuthorizationCallBackHandler;
-import it.niuma.mscsoapws.ws.endpoint.ServiceEndpoint;
-import it.niuma.mscsoapws.ws.interceptor.CustomEndpointInterceptor;
-
-//import it.niuma.SoapMsc.ws.interceptor.CustomEndpointInterceptor;
-//import it.niuma.SoapMsc.ws.interceptor.CustomSmartEndpointInterceptor;
+import it.niuma.mscsoapws.ws.interceptor.TokekCheckInterceptor;
 
 @EnableWs
 @Configuration
@@ -61,7 +53,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		AuthorizationCallBackHandler callbackHandler = new AuthorizationCallBackHandler();
 		return callbackHandler;
 	}
-	
+
 	@Bean
 	public Wss4jSecurityInterceptor securityInterceptor(){
 		Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
@@ -79,7 +71,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
 	@Bean
 	public EndpointInterceptor endPointInterceptor() {
-		CustomEndpointInterceptor interceptor = new CustomEndpointInterceptor();
+		TokekCheckInterceptor interceptor = new TokekCheckInterceptor();
 		return interceptor;
 	}
 //

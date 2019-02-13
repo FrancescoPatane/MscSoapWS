@@ -9,6 +9,8 @@ public interface WsAccessTokenRepository {
 	public long insert(long vendorId, String token, LocalDateTime now, LocalDateTime expirationDate);
 
 	public WsAccessToken findByToken (String token);
+
+	public LocalDateTime getTokenExpirationDate (String token);
 	
 	
 	
