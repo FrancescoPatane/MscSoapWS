@@ -6,6 +6,9 @@ import java.util.*;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPBody;
+import javax.xml.soap.SOAPMessage;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
@@ -13,6 +16,7 @@ import javax.xml.xpath.XPathFactory;
 
 import it.niuma.mscsoapws.ws.endpoint.UserLoginEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.context.MessageContext;
 
 import org.springframework.ws.server.SmartEndpointInterceptor;
@@ -28,7 +32,7 @@ public class TokekCheckInterceptor implements SmartEndpointInterceptor {
 
 	@Override
 	public boolean handleRequest(MessageContext messageContext, Object endpoint) throws Exception {
-
+		WebServiceMessage message = messageContext.getRequest();
 		System.out.println("### SOAP REQUEST ###");
 		//There is a huge problem: whether the user is logging in or not, this point will always be executed.
 		//This means that there will likely be an exception if I'm logging in. For this reason, I'm forcing to
@@ -82,8 +86,9 @@ public class TokekCheckInterceptor implements SmartEndpointInterceptor {
 		Object result = expr.evaluate(doc, XPathConstants.NODE);
 		Node node = (Node) result;
 		String token = node.getNodeValue();
-		return authUtility.checkTokenIsValid(token);
-
+		//return authUtility.checkTokenIsValid(token);
+		messageContext.setProperty("token", "ciaooooooo");
+		return true;
 	}
 
 	@Override

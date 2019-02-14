@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.08 alle 04:02:35 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -38,14 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "porderRef"
 })
-@XmlRootElement(name = "getPOrderLineFromPOrderRef")
+@XmlRootElement(name = "getPOrderLineFromPOrderRef", namespace = "it.niuma.mscsoapws.ws")
 public class GetPOrderLineFromPOrderRef {
 
-    @XmlElement(name = "porder_ref")
+    @XmlElement(name = "porder_ref", namespace = "it.niuma.mscsoapws.ws")
     protected long porderRef;
 
     /**
-     * Recupera il valore della proprietà porderRef.
+     * Recupera il valore della proprietï¿½ porderRef.
      * 
      */
     public long getPorderRef() {
@@ -53,7 +46,7 @@ public class GetPOrderLineFromPOrderRef {
     }
 
     /**
-     * Imposta il valore della proprietà porderRef.
+     * Imposta il valore della proprietï¿½ porderRef.
      * 
      */
     public void setPorderRef(long value) {

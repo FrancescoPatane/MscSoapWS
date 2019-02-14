@@ -33,7 +33,7 @@ public class UserLoginEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE, localPart = "loginRequest")
     @ResponsePayload
-    public LoginResponse executeLoginRequest(@RequestPayload LoginRequest request) throws InvalidCredentialsException {
+    public LoginResponse executeLoginRequest(@RequestPayload LoginRequest request)  {
         logger.info("Received webservice call for executeLoginRequest");
         LoginResponse response = new LoginResponse();
         String username = request.getUsername();
@@ -41,8 +41,14 @@ public class UserLoginEndpoint {
         List<VnWsCredential> storedCredentials = authUtil.getStoredCredentials(username, password);
         if (storedCredentials.size()>0) {
             response.setAccessToken(authUtil.generateToken(storedCredentials.get(0)));
+            response.setStatusCode(200);
+            response.setSuccess(true);
+            response.setMessage("Login effettuato con successo");
         }else {
-            throw new InvalidCredentialsException("Invalid credentials");
+            response.setAccessToken("");
+            response.setStatusCode(500);
+            response.setSuccess(false);
+            response.setMessage("Invalid credentials");
         }
         return response;
     }

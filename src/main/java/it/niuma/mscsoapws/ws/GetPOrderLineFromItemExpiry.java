@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.08 alle 04:02:35 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -38,14 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "itemExpiry"
 })
-@XmlRootElement(name = "getPOrderLineFromItemExpiry")
+@XmlRootElement(name = "getPOrderLineFromItemExpiry", namespace = "it.niuma.mscsoapws.ws")
 public class GetPOrderLineFromItemExpiry {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String itemExpiry;
 
     /**
-     * Recupera il valore della proprietà itemExpiry.
+     * Recupera il valore della proprietï¿½ itemExpiry.
      * 
      * @return
      *     possible object is
@@ -57,7 +50,7 @@ public class GetPOrderLineFromItemExpiry {
     }
 
     /**
-     * Imposta il valore della proprietà itemExpiry.
+     * Imposta il valore della proprietï¿½ itemExpiry.
      * 
      * @param value
      *     allowed object is

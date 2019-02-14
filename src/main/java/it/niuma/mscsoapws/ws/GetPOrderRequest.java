@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.08 alle 04:02:35 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -38,14 +31,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "poNumber"
 })
-@XmlRootElement(name = "getPOrderRequest")
+@XmlRootElement(name = "getPOrderRequest", namespace = "it.niuma.mscsoapws.ws")
 public class GetPOrderRequest {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String poNumber;
 
     /**
-     * Recupera il valore della proprietà poNumber.
+     * Recupera il valore della proprietï¿½ poNumber.
      * 
      * @return
      *     possible object is
@@ -57,7 +50,7 @@ public class GetPOrderRequest {
     }
 
     /**
-     * Imposta il valore della proprietà poNumber.
+     * Imposta il valore della proprietï¿½ poNumber.
      * 
      * @param value
      *     allowed object is

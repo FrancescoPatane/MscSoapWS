@@ -25,6 +25,9 @@
 		<xs:element name="loginResponse">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="statusCode" type="xs:int"/>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="message" type="xs:string" />
 				<xs:element name="accessToken" type="xs:string" />
 			</xs:sequence>
 		</xs:complexType>
@@ -32,15 +35,14 @@
 
 	<xs:element name="getPOrdersFromVendorCodeRequest">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="vendorCode" type="xs:string"/>
-			</xs:sequence>
+			<xs:sequence/>
 		</xs:complexType>
 	</xs:element>
 
 	<xs:element name="getPOrdersFromVendorCodeResponse">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="soapResponse" type="tns:SOAPResponse"/>
 				<xs:element name="orders" type="tns:POrderXml" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
@@ -57,12 +59,15 @@
 	<xs:element name="getPOrderResponse">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element name="soapResponse" type="tns:SOAPResponse"/>
 				<xs:element name="pOrder" type="tns:POrderXml" />
 				<xs:element name="requiresLogistic" type="xs:boolean"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
+
+
+	<!-- -->
     <xs:element name="getPOrderLineFromID">
         <xs:complexType>
             <xs:sequence>
@@ -90,7 +95,6 @@
     <xs:element name="createNewPLotRequest">
         <xs:complexType>
             <xs:sequence>
-				<xs:element name="accessToken" type="xs:string"/>
 				<xs:element name="plotToCreate" type="tns:pLotDataFromInput"/>
 				<xs:element name="plotLineToCreate" type="tns:pLotLineDataFromInput" maxOccurs="unbounded" minOccurs="0"/>
             </xs:sequence>
@@ -100,6 +104,9 @@
     <xs:element name="createNewPLotResponse">
         <xs:complexType>
             <xs:sequence>
+				<xs:element name="statusCode" type="xs:int"/>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="message" type="xs:string" />
                 <xs:element name="PLot" type="tns:PLotXml"/>
 				<xs:element name="PLotLine" type="tns:PLotLineXml" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
@@ -109,6 +116,9 @@
     <xs:element name="getPOrderLineFromIDResponse">
         <xs:complexType>
             <xs:sequence>
+				<xs:element name="statusCode" type="xs:int"/>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="message" type="xs:string" />
                 <xs:element name="POrderLine" type="tns:POrderLineXml" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
@@ -118,6 +128,9 @@
     <xs:element name="getPOrderLineFromPOrderRefResponse">
         <xs:complexType>
             <xs:sequence>
+				<xs:element name="statusCode" type="xs:int"/>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="message" type="xs:string" />
                 <xs:element name="POrderLines" type="tns:POrderLineXml" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -126,6 +139,9 @@
     <xs:element name="getPOrderLineFromItemExpiryResponse">
         <xs:complexType>
             <xs:sequence>
+				<xs:element name="statusCode" type="xs:int"/>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="message" type="xs:string" />
                 <xs:element name="POrderLines" type="tns:POrderLineXml" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
@@ -288,7 +304,7 @@
 	        <xs:element name="ssccAvailable" type="xs:decimal" minOccurs="0" />
 	    </xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="PLotLineXml">
 	    <xs:sequence>
 	      <xs:element name="id" type="xs:decimal" />
@@ -338,6 +354,13 @@
 	      <xs:element name="moq" type="xs:decimal" minOccurs="0"/>   
 	    </xs:sequence>	    
 	</xs:complexType>
-	
+
+	<xs:complexType name="SOAPResponse">
+		<xs:sequence>
+			<xs:element name="statusCode" type="xs:int" />
+			<xs:element name="message" type="xs:string"/>
+			<xs:element name="errorsList" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
 
 </xs:schema>

@@ -54,17 +54,17 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return callbackHandler;
 	}
 
-	@Bean
+/*	@Bean
 	public Wss4jSecurityInterceptor securityInterceptor(){
 		Wss4jSecurityInterceptor securityInterceptor = new Wss4jSecurityInterceptor();
 		securityInterceptor.setValidationActions("UsernameToken");
 		securityInterceptor.setValidationCallbackHandler(authorizationCallBackHandler());
 		return securityInterceptor;
 	}
-	
+*/
 	    @Override
 	    public void addInterceptors(List interceptors) {
-//	        interceptors.add(securityInterceptor());
+	        //interceptors.add(securityInterceptor());
 	    	interceptors.add(endPointInterceptor());
 	    }
 

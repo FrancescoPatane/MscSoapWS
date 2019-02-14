@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.08 alle 04:02:35 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -27,6 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="statusCode" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="POrderLines" type="{it.niuma.mscsoapws.ws}POrderLineXml" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -38,13 +34,78 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "statusCode",
+    "success",
+    "message",
     "pOrderLines"
 })
-@XmlRootElement(name = "getPOrderLineFromPOrderRefResponse")
+@XmlRootElement(name = "getPOrderLineFromPOrderRefResponse", namespace = "it.niuma.mscsoapws.ws")
 public class GetPOrderLineFromPOrderRefResponse {
 
-    @XmlElement(name = "POrderLines")
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
+    protected int statusCode;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
+    protected boolean success;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
+    protected String message;
+    @XmlElement(name = "POrderLines", namespace = "it.niuma.mscsoapws.ws")
     protected List<POrderLineXml> pOrderLines;
+
+    /**
+     * Recupera il valore della proprietï¿½ statusCode.
+     * 
+     */
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    /**
+     * Imposta il valore della proprietï¿½ statusCode.
+     * 
+     */
+    public void setStatusCode(int value) {
+        this.statusCode = value;
+    }
+
+    /**
+     * Recupera il valore della proprietï¿½ success.
+     * 
+     */
+    public boolean isSuccess() {
+        return success;
+    }
+
+    /**
+     * Imposta il valore della proprietï¿½ success.
+     * 
+     */
+    public void setSuccess(boolean value) {
+        this.success = value;
+    }
+
+    /**
+     * Recupera il valore della proprietï¿½ message.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Imposta il valore della proprietï¿½ message.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMessage(String value) {
+        this.message = value;
+    }
 
     /**
      * Gets the value of the pOrderLines property.

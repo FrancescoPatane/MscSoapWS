@@ -1,6 +1,7 @@
 
 package it.niuma.mscsoapws.ws;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -20,6 +21,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="statusCode" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="success" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="PLot" type="{it.niuma.mscsoapws.ws}PLotXml"/>
  *         &lt;element name="PLotLine" type="{it.niuma.mscsoapws.ws}PLotLineXml" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
@@ -32,16 +36,81 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+    "statusCode",
+    "success",
+    "message",
     "pLot",
     "pLotLine"
 })
 @XmlRootElement(name = "createNewPLotResponse", namespace = "it.niuma.mscsoapws.ws")
 public class CreateNewPLotResponse {
 
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
+    protected int statusCode;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws")
+    protected boolean success;
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
+    protected String message;
     @XmlElement(name = "PLot", namespace = "it.niuma.mscsoapws.ws", required = true)
     protected PLotXml pLot;
     @XmlElement(name = "PLotLine", namespace = "it.niuma.mscsoapws.ws")
     protected List<PLotLineXml> pLotLine;
+
+    /**
+     * Recupera il valore della propriet� statusCode.
+     * 
+     */
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    /**
+     * Imposta il valore della propriet� statusCode.
+     * 
+     */
+    public void setStatusCode(int value) {
+        this.statusCode = value;
+    }
+
+    /**
+     * Recupera il valore della propriet� success.
+     * 
+     */
+    public boolean isSuccess() {
+        return success;
+    }
+
+    /**
+     * Imposta il valore della propriet� success.
+     * 
+     */
+    public void setSuccess(boolean value) {
+        this.success = value;
+    }
+
+    /**
+     * Recupera il valore della propriet� message.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Imposta il valore della propriet� message.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setMessage(String value) {
+        this.message = value;
+    }
 
     /**
      * Recupera il valore della propriet� pLot.

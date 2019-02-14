@@ -1,10 +1,3 @@
-//
-// Questo file è stato generato dall'architettura JavaTM per XML Binding (JAXB) Reference Implementation, v2.2.8-b130911.1802 
-// Vedere <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
-// Qualsiasi modifica a questo file andrà persa durante la ricompilazione dello schema di origine. 
-// Generato il: 2019.02.08 alle 04:02:35 PM CET 
-//
-
 
 package it.niuma.mscsoapws.ws;
 
@@ -40,16 +33,16 @@ import javax.xml.bind.annotation.XmlType;
     "username",
     "password"
 })
-@XmlRootElement(name = "loginRequest")
+@XmlRootElement(name = "loginRequest", namespace = "it.niuma.mscsoapws.ws")
 public class LoginRequest {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String username;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "it.niuma.mscsoapws.ws", required = true)
     protected String password;
 
     /**
-     * Recupera il valore della proprietà username.
+     * Recupera il valore della proprietï¿½ username.
      * 
      * @return
      *     possible object is
@@ -61,7 +54,7 @@ public class LoginRequest {
     }
 
     /**
-     * Imposta il valore della proprietà username.
+     * Imposta il valore della proprietï¿½ username.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +66,7 @@ public class LoginRequest {
     }
 
     /**
-     * Recupera il valore della proprietà password.
+     * Recupera il valore della proprietï¿½ password.
      * 
      * @return
      *     possible object is
@@ -85,7 +78,7 @@ public class LoginRequest {
     }
 
     /**
-     * Imposta il valore della proprietà password.
+     * Imposta il valore della proprietï¿½ password.
      * 
      * @param value
      *     allowed object is
